@@ -1,558 +1,1895 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Petal & Polish — Nail Salon</title>
+
+    <!-- Bootstrap 5 -->
     <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
       rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
     />
-    <link rel="stylesheet" href="/assets/CDN/Bootstrap/bootstrap.min.css" />
+    <!-- Google Fonts -->
     <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap"
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
-      integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
     />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-      integrity="sha512-c42qTSw/wPZ3/5LBzD+Bw5f7bSF2oxou6wEb+I/lqeaKV5FDIfMvvRp772y4jcJLKuGUOpbJMdg/BTl50fJYAw=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-    <title>Portfolio</title>
+
     <style>
-      @import url("https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&display=swap");
-
-      .pt-serif-regular {
-        font-family: "PT Serif", serif;
-        font-weight: 400;
-        font-style: normal;
-      }
-
-      .pt-serif-bold {
-        font-family: "PT Serif", serif;
-        font-weight: 700;
-        font-style: normal;
+      :root {
+        --blush: #f2c4ce;
+        --rose: #e8a0b0;
+        --deep: #c97d8e;
+        --petal: #fae8ec;
+        --cream: #fdf8f5;
+        --ivory: #fbf5f0;
+        --mink: #7a5c62;
+        --mink-lt: #a68890;
+        --ink: #3d2b30;
+        --white: #ffffff;
       }
 
       * {
-        padding: 0%;
-        margin: 0%;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
       }
-
-      body,
       html {
-        font-family: "PT Serif", serif;
-        gap: 0;
-        background-color: #e6cfa9 !important;
-        color: #fbf9d1;
+        scroll-behavior: smooth;
       }
 
-      .main {
+      body {
+        font-family: "DM Sans", sans-serif;
+        background: var(--cream);
+        color: var(--ink);
+        overflow-x: hidden;
+        cursor: none;
+      }
+
+      /* ── CUSTOM CURSOR ── */
+      #cur {
+        position: fixed;
+        width: 9px;
+        height: 9px;
+        background: var(--deep);
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 99999;
+        transform: translate(-50%, -50%);
+        transition:
+          width 0.2s,
+          height 0.2s;
+      }
+      #cur-ring {
+        position: fixed;
+        width: 34px;
+        height: 34px;
+        border: 1.5px solid rgba(201, 125, 142, 0.45);
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 99998;
+        transform: translate(-50%, -50%);
+        transition:
+          width 0.18s,
+          height 0.18s,
+          border-color 0.2s;
+      }
+
+      /* ── PETALS ── */
+      #petals {
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: 1;
+        overflow: hidden;
+      }
+      .petal {
+        position: absolute;
+        border-radius: 50% 50% 50% 0;
+        opacity: 0;
+        animation: fall linear infinite;
+      }
+      @keyframes fall {
+        0% {
+          opacity: 0;
+          transform: translateY(-40px) rotate(0deg);
+        }
+        8% {
+          opacity: 0.65;
+        }
+        90% {
+          opacity: 0.35;
+        }
+        100% {
+          opacity: 0;
+          transform: translateY(105vh) rotate(380deg);
+        }
+      }
+
+      /* ── NAVBAR ── */
+      .navbar {
+        background: rgba(253, 248, 245, 0.88) !important;
+        backdrop-filter: blur(14px);
+        border-bottom: 1px solid rgba(242, 196, 206, 0.35);
+        transition: transform 0.4s ease;
+        padding: 1rem 2rem;
+      }
+      .navbar-brand {
+        font-family: "Playfair Display", serif;
+        font-size: 1.4rem;
+        font-weight: 600;
+        color: var(--ink) !important;
+        letter-spacing: 0.03em;
+      }
+      .navbar-brand span {
+        color: var(--deep);
+        font-style: italic;
+      }
+      .nav-link {
+        font-size: 12px !important;
+        letter-spacing: 0.12em !important;
+        text-transform: uppercase !important;
+        color: var(--mink) !important;
+        transition: color 0.2s !important;
+      }
+      .nav-link:hover {
+        color: var(--deep) !important;
+      }
+      .btn-nav-book {
+        background: var(--deep) !important;
+        color: var(--white) !important;
+        border: none !important;
+        border-radius: 50px !important;
+        font-size: 12px !important;
+        letter-spacing: 0.1em !important;
+        text-transform: uppercase !important;
+        padding: 0.5rem 1.4rem !important;
+        transition:
+          background 0.2s,
+          transform 0.15s !important;
+      }
+      .btn-nav-book:hover {
+        background: var(--mink) !important;
+        transform: translateY(-1px) !important;
+      }
+
+      /* ── HERO ── */
+      .hero-section {
+        min-height: 100vh;
+        background: linear-gradient(
+          135deg,
+          var(--cream) 0%,
+          var(--petal) 60%,
+          #f9dce5 100%
+        );
+        padding: 7rem 0 4rem;
+        position: relative;
+        z-index: 2;
+        overflow: hidden;
+      }
+      .hero-section::before {
+        content: "";
+        position: absolute;
+        top: -100px;
+        right: -100px;
+        width: 600px;
+        height: 600px;
+        border-radius: 50%;
+        background: radial-gradient(
+          circle,
+          rgba(242, 196, 206, 0.35) 0%,
+          transparent 65%
+        );
+        pointer-events: none;
+      }
+
+      .hero-eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 11px;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--deep);
+        margin-bottom: 1.5rem;
+      }
+      .hero-eyebrow::before {
+        content: "";
+        width: 28px;
+        height: 1px;
+        background: var(--deep);
+      }
+
+      .hero-title {
+        font-family: "Playfair Display", serif;
+        font-size: clamp(2.8rem, 6vw, 5.5rem);
+        font-weight: 400;
+        line-height: 1.1;
+        color: var(--ink);
+        margin-bottom: 1.5rem;
+      }
+      .hero-title em {
+        font-style: italic;
+        color: var(--deep);
+      }
+
+      .hero-sub {
+        font-size: 15px;
+        color: var(--mink-lt);
+        line-height: 1.8;
+        max-width: 420px;
+        margin-bottom: 2.5rem;
+      }
+
+      .btn-primary-custom {
+        background: var(--deep);
+        color: var(--white);
+        border: none;
+        border-radius: 50px;
+        font-size: 12px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        padding: 0.9rem 2.2rem;
+        transition:
+          background 0.2s,
+          transform 0.15s;
+        text-decoration: none;
+        display: inline-block;
+      }
+      .btn-primary-custom:hover {
+        background: var(--mink);
+        transform: translateY(-2px);
+        color: var(--white);
+      }
+
+      .btn-ghost-custom {
+        font-size: 12px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--mink);
+        text-decoration: none;
+        border-bottom: 1px solid var(--blush);
+        padding-bottom: 2px;
+        transition:
+          color 0.2s,
+          border-color 0.2s;
+      }
+      .btn-ghost-custom:hover {
+        color: var(--deep);
+        border-color: var(--deep);
+      }
+
+      /* Hero visual cards */
+      .hero-cards-wrap {
+        position: relative;
+        height: 480px;
+      }
+      .hcard {
+        position: absolute;
+        border-radius: 24px;
+        overflow: hidden;
+        transition: transform 0.4s ease;
+      }
+      .hcard:hover {
+        transform: scale(1.04) rotate(0deg) !important;
+      }
+      .hcard-1 {
+        width: 220px;
+        height: 300px;
+        top: 0;
+        left: 0;
+        background: linear-gradient(155deg, #f7d5dc, #eda8b8);
+        border-radius: 24px 24px 80px 24px;
+        animation: float1 5s ease-in-out infinite;
+      }
+      .hcard-2 {
+        width: 170px;
+        height: 210px;
+        top: 30px;
+        right: 40px;
+        background: linear-gradient(155deg, #fae3e8, #f2c4ce);
+        border-radius: 80px 24px 24px 24px;
+        animation: float2 6s ease-in-out infinite;
+      }
+      .hcard-3 {
+        width: 190px;
+        height: 230px;
+        bottom: 10px;
+        left: 60px;
+        background: linear-gradient(155deg, #f0d0d8, #dfa0b2);
+        border-radius: 24px 80px 24px 24px;
+        animation: float1 7s ease-in-out infinite reverse;
+      }
+      .hcard-label {
+        position: absolute;
+        bottom: 1.25rem;
+        left: 1.25rem;
+        font-family: "Playfair Display", serif;
+        font-size: 1rem;
+        font-weight: 600;
+        color: var(--ink);
+      }
+      @keyframes float1 {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-12px);
+        }
+      }
+      @keyframes float2 {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-8px);
+        }
+      }
+
+      /* ── WAVE DIVIDER ── */
+      .wave-div {
+        height: 2px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--blush),
+          var(--rose),
+          var(--blush),
+          transparent
+        );
+      }
+
+      /* ── SECTION HEADINGS ── */
+      .s-eyebrow {
+        font-size: 11px;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--deep);
+        margin-bottom: 0.75rem;
+      }
+      .s-eyebrow::before,
+      .s-eyebrow::after {
+        content: " ✦ ";
+        font-size: 9px;
+        color: var(--blush);
+      }
+      .s-title {
+        font-family: "Playfair Display", serif;
+        font-size: clamp(1.8rem, 4vw, 3rem);
+        font-weight: 400;
+        line-height: 1.2;
+        color: var(--ink);
+      }
+      .s-title em {
+        font-style: italic;
+        color: var(--deep);
+      }
+      .s-sub {
+        font-size: 14px;
+        color: var(--mink-lt);
+        line-height: 1.8;
+      }
+
+      /* ── SERVICES SECTION ── */
+      .services-section {
+        background: var(--ivory);
+        padding: 6rem 0;
+        position: relative;
+        z-index: 2;
+      }
+
+      .service-card {
+        background: var(--white);
+        border: 1px solid rgba(242, 196, 206, 0.45);
+        border-radius: 20px;
+        padding: 2rem 1.5rem;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        transition:
+          transform 0.3s,
+          box-shadow 0.3s,
+          border-color 0.3s;
+        height: 100%;
+        cursor: none;
+      }
+      .service-card::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          circle at var(--mx, 50%) var(--my, 50%),
+          rgba(201, 125, 142, 0.12) 0%,
+          transparent 65%
+        );
+        opacity: 0;
+        transition: opacity 0.3s;
+        pointer-events: none;
+        border-radius: inherit;
+      }
+      .service-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 24px 48px rgba(201, 125, 142, 0.14);
+        border-color: var(--rose);
+      }
+      .service-card:hover::before {
+        opacity: 1;
+      }
+      .service-card > * {
+        position: relative;
+        z-index: 1;
+      }
+
+      .svc-icon-wrap {
+        width: 64px;
+        height: 64px;
+        border-radius: 18px;
+        background: var(--petal);
+        margin: 0 auto 1.25rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 26px;
+        transition: transform 0.3s;
+      }
+      .service-card:hover .svc-icon-wrap {
+        transform: scale(1.1) rotate(-5deg);
+      }
+
+      .svc-name {
+        font-family: "Playfair Display", serif;
+        font-size: 1.15rem;
+        font-weight: 600;
+        color: var(--ink);
+        margin-bottom: 0.4rem;
+      }
+      .svc-desc {
+        font-size: 12.5px;
+        color: var(--mink-lt);
+        line-height: 1.65;
+        margin-bottom: 1rem;
+      }
+      .svc-price {
+        font-size: 13px;
+        font-weight: 500;
+        color: var(--deep);
+        letter-spacing: 0.06em;
+      }
+      .svc-duration {
+        font-size: 11px;
+        color: var(--mink-lt);
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        margin-top: 0.25rem;
+      }
+      .svc-badge {
+        position: absolute;
+        top: 14px;
+        right: 14px;
+        background: var(--petal);
+        border: 1px solid var(--blush);
+        border-radius: 50px;
+        font-size: 10px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--deep);
+        padding: 0.25rem 0.6rem;
+      }
+
+      /* ── GALLERY STRIP ── */
+      .gallery-section {
+        background: var(--petal);
+        padding: 4rem 0;
+        overflow: hidden;
+        position: relative;
+        z-index: 2;
+      }
+      .gallery-track {
+        display: flex;
+        gap: 1.25rem;
+        animation: galleryScroll 28s linear infinite;
+        width: max-content;
+      }
+      .gallery-track:hover {
+        animation-play-state: paused;
+      }
+      @keyframes galleryScroll {
+        from {
+          transform: translateX(0);
+        }
+        to {
+          transform: translateX(-50%);
+        }
+      }
+      .g-item {
+        width: 200px;
+        height: 260px;
+        border-radius: 24px 24px 70px 24px;
+        overflow: hidden;
+        flex-shrink: 0;
+      }
+      .g-item:nth-child(even) {
+        border-radius: 70px 24px 24px 24px;
+        margin-top: 1.5rem;
+      }
+      .g-placeholder {
         width: 100%;
-        height: 100vh;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2.5rem;
+        transition: transform 0.4s;
       }
-      .text-light {
-        color: #fbf9d1 !important;
+      .g-item:hover .g-placeholder {
+        transform: scale(1.08);
       }
-      .border-light {
-        border-color: #fbf9d1 !important;
+      .gc1 {
+        background: linear-gradient(135deg, #fad4dc, #f0a8bc);
       }
-      .bg-primary {
-        background-color: #c1856d !important;
+      .gc2 {
+        background: linear-gradient(135deg, #fdeaf0, #f2c8d4);
       }
-
-      .bg-secondary {
-        background-color: #8d523d !important;
+      .gc3 {
+        background: linear-gradient(135deg, #ecc8d4, #d898b0);
       }
-
-      .btn {
-        border-color: rgb(216 207 188);
-        color: rgb(216 207 188);
+      .gc4 {
+        background: linear-gradient(135deg, #f8d8e4, #eaa8be);
       }
-      .w-15 {
-        width: 15%;
+      .gc5 {
+        background: linear-gradient(135deg, #fce4ec, #f4b8cc);
       }
-
-      .w-20 {
-        width: 20%;
-      }
-
-      .accordion {
-        --accordion-border-color: #565449;
-        --bs-accordion-btn-bg: transparent;
-        --bs-accordion-border-color: transparent;
-        --bs-accordion-active-bg: transparent;
-        --bs-accordion-active-bg: transparent;
+      .gc6 {
+        background: linear-gradient(135deg, #f0d0dc, #e098b0);
       }
 
-      .accordion-item {
-        --accordion-border-color: #565449;
-        background-color: transparent;
-        --accordion-border-color: #565449;
+      /* ── BOOKING ── */
+      .booking-section {
+        background: var(--cream);
+        padding: 6rem 0;
+        position: relative;
+        z-index: 2;
       }
 
-      .border-secondary {
-        border-color: #565449;
+      .booking-info-card {
+        background: var(--petal);
+        border: 1px solid rgba(242, 196, 206, 0.5);
+        border-radius: 24px;
+        padding: 2.5rem;
       }
-      .social-icon {
-        width: 15%;
-        height: auto;
+      .avail-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: var(--white);
+        border: 1px solid var(--blush);
+        border-radius: 50px;
+        font-size: 11px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--deep);
+        padding: 0.4rem 1rem;
+        margin-bottom: 1.5rem;
       }
-      .w-107 {
-        width: 107% !important;
+      .avail-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: #7bc67e;
+        animation: blink 2s step-end infinite;
       }
-      @media screen and (min-width: 768px) {
-        .profilePic {
-          width: 25vw;
-          height: 25vh;
+      @keyframes blink {
+        0%,
+        100% {
+          opacity: 1;
         }
-
-        .card {
-          height: 43vh;
+        50% {
+          opacity: 0;
         }
-
-        .portrait {
-          height: 43vh;
-        }
-
-        .card2,
-        .card3 {
-          height: 40vh;
-        }
-
-        .card4 {
-          width: 96%;
-          height: 75vh;
-        }
-
-        .card5 {
-          width: 96%;
-          height: 8vh;
-        }
-
-        h1 {
-          font-size: 2.5rem !important;
-          line-height: 1;
-        }
-        .intro {
-          width: 75%;
-          font-size: 0.95rem !important;
-          text-align: justify;
-        }
-
-        .contact_heading {
-          width: 50%;
-        }
-
-        
       }
-      @media screen and (max-width: 768px) {
-        .btn {
-          font-size: 0.75rem !important;
-          border: none !important;
-        }
-        .profilePic {
-          width: 85% !important;
-          height: auto;
-        }
-        .intro {
-          width: 80%;
-          font-size: 0.75rem !important;
-          text-align: justify;
-        }
 
-        .card {
-          height: 40vh;
-        }
+      .hours-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.6rem 0;
+        border-bottom: 1px solid rgba(201, 125, 142, 0.2);
+        font-size: 13px;
+      }
+      .hours-row:last-child {
+        border-bottom: none;
+      }
+      .hours-row span:first-child {
+        color: var(--mink-lt);
+      }
+      .hours-row span:last-child {
+        color: var(--ink);
+        font-weight: 500;
+      }
 
-        .portrait {
-          width: 100%;
-          height: auto;
-        }
+      /* Booking form card */
+      .booking-form-card {
+        background: var(--white);
+        border: 1px solid rgba(242, 196, 206, 0.5);
+        border-radius: 24px;
+        padding: 2.5rem;
+      }
+      .form-label-custom {
+        font-size: 11px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--mink);
+        margin-bottom: 6px;
+        font-weight: 500;
+        display: block;
+      }
+      .form-control-custom,
+      .form-select-custom {
+        background: var(--ivory) !important;
+        border: 1px solid rgba(242, 196, 206, 0.55) !important;
+        border-radius: 12px !important;
+        color: var(--ink) !important;
+        font-family: "DM Sans", sans-serif !important;
+        font-size: 14px !important;
+        padding: 0.75rem 1rem !important;
+      }
+      .form-control-custom:focus,
+      .form-select-custom:focus {
+        border-color: var(--rose) !important;
+        box-shadow: 0 0 0 3px rgba(232, 160, 176, 0.15) !important;
+        background: var(--white) !important;
+      }
+      .form-control-custom::placeholder {
+        color: rgba(122, 92, 98, 0.4) !important;
+      }
 
-        .card2 {
-          height: 40vh;
-        }
-        .card3 {
-          height: 25vh;
-        }
-        .contact_heading {
-          width: 75%;
-        }
+      /* time slots */
+      .time-slot {
+        background: var(--ivory);
+        border: 1px solid rgba(242, 196, 206, 0.5);
+        border-radius: 10px;
+        padding: 0.5rem 0.25rem;
+        font-size: 12px;
+        color: var(--mink);
+        text-align: center;
+        cursor: none;
+        transition: all 0.2s;
+        user-select: none;
+      }
+      .time-slot:hover:not(.booked),
+      .time-slot.selected {
+        background: var(--petal);
+        border-color: var(--rose);
+        color: var(--deep);
+      }
+      .time-slot.booked {
+        background: #f5f5f5;
+        color: #ccc;
+        text-decoration: line-through;
+        cursor: not-allowed;
+      }
 
-        .card4 {
-          width: 92%;
-          height: 96%;
-        }
+      .btn-book-now {
+        background: var(--deep);
+        color: var(--white);
+        border: none;
+        border-radius: 12px;
+        width: 100%;
+        font-family: "DM Sans", sans-serif;
+        font-size: 13px;
+        font-weight: 500;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        padding: 1rem;
+        transition:
+          background 0.2s,
+          transform 0.15s;
+        cursor: none;
+      }
+      .btn-book-now:hover {
+        background: var(--mink);
+        transform: translateY(-2px);
+      }
 
-        .card5 {
-          width: 92%;
-          height: 70%;
-        }
+      /* ── TESTIMONIALS ── */
+      .testi-section {
+        background: var(--ivory);
+        padding: 6rem 0;
+        position: relative;
+        z-index: 2;
+      }
+      .testi-card {
+        background: var(--white);
+        border: 1px solid rgba(242, 196, 206, 0.35);
+        border-radius: 20px;
+        padding: 2rem;
+        height: 100%;
+        transition: transform 0.3s;
+      }
+      .testi-card:hover {
+        transform: translateY(-5px);
+      }
+      .testi-stars {
+        color: var(--rose);
+        letter-spacing: 2px;
+        font-size: 14px;
+        margin-bottom: 1rem;
+      }
+      .testi-text {
+        font-family: "Playfair Display", serif;
+        font-size: 1rem;
+        font-style: italic;
+        color: var(--ink);
+        line-height: 1.7;
+        margin-bottom: 1.25rem;
+      }
+      .testi-avatar {
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        background: var(--petal);
+        border: 2px solid var(--blush);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "Playfair Display", serif;
+        font-weight: 600;
+        font-size: 14px;
+        color: var(--deep);
+        flex-shrink: 0;
+      }
+      .testi-name {
+        font-size: 13px;
+        font-weight: 500;
+        color: var(--ink);
+      }
+      .testi-role {
+        font-size: 11px;
+        color: var(--mink-lt);
+      }
 
-        h1 {
-          font-size: 1.5rem !important;
-          line-height: 1.2;
-        }
+      /* ── FOOTER ── */
+      .footer-section {
+        background: var(--ink);
+        padding: 4rem 0 2rem;
+        color: rgba(253, 248, 245, 0.65);
+      }
+      .footer-brand {
+        font-family: "Playfair Display", serif;
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: var(--cream);
+      }
+      .footer-brand span {
+        color: var(--blush);
+        font-style: italic;
+      }
+      .footer-heading {
+        font-size: 11px;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: var(--blush);
+        margin-bottom: 1.25rem;
+      }
+      .footer-link {
+        display: block;
+        font-size: 13px;
+        color: rgba(253, 248, 245, 0.55);
+        text-decoration: none;
+        margin-bottom: 0.55rem;
+        transition: color 0.2s;
+      }
+      .footer-link:hover {
+        color: var(--blush);
+      }
+      .footer-divider {
+        border-color: rgba(255, 255, 255, 0.08) !important;
+      }
+      .footer-copy {
+        font-size: 12px;
+        color: rgba(253, 248, 245, 0.3);
+      }
 
-        .w-15{
-          width: 25% !important;
+      /* ── SCROLL REVEAL ── */
+      .sr {
+        opacity: 0;
+        transform: translateY(28px);
+        transition:
+          opacity 0.7s ease,
+          transform 0.7s ease;
+      }
+      .sr.in {
+        opacity: 1;
+        transform: none;
+      }
+
+      /* ── SUCCESS STATE ── */
+      .booking-success {
+        display: none;
+        text-align: center;
+        padding: 2.5rem 1rem;
+      }
+      .success-emoji {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+      }
+
+      /* ── RESPONSIVE ── */
+      @media (min-width: 768px) {
+        .hero-title {
+          font-size: 60px !important;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .hero-cards-wrap {
+          height: 300px;
+        }
+        .hcard-1 {
+          width: 150px;
+          height: 200px;
+        }
+        .hcard-2 {
+          width: 120px;
+          height: 150px;
+          right: 10px;
+        }
+        .hcard-3 {
+          width: 130px;
+          height: 160px;
+          left: 30px;
+        }
+        #cur,
+        #cur-ring {
+          display: none;
+        }
+        body {
+          cursor: auto;
         }
       }
     </style>
   </head>
-
   <body>
-    <div class="main">
-      <div class="row g-0">
-        <div class="col-12">
-          <nav class="navbar bg-primary m-3 rounded-4">
-            <div class="container-fluid">
-              <a class="navbar-brand text-light fw-bold ms-2">Soni</a>
-              <form class="d-flex" role="search">
-                <button
-                  class="btn btn-outline-success bg-secondary rounded-3 py-2 me-2"
-                  type="submit"
-                >
-                  Resume
-                </button>
-              </form>
-            </div>
-          </nav>
+    <div id="cur"></div>
+    <div id="cur-ring"></div>
+    <div id="petals"></div>
+
+    <!-- ═══════════════ NAVBAR ═══════════════ -->
+    <nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand" href="#">Petal <span>&</span> Polish</a>
+        <button
+          class="navbar-toggler border-0"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navMenu"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navMenu">
+          <ul
+            class="navbar-nav ms-auto align-items-center gap-lg-3 gap-2 mt-3 mt-lg-0"
+          >
+            <li class="nav-item">
+              <a class="nav-link" href="#services">Services</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#gallery">Gallery</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#booking">Booking</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link btn-nav-book ms-2" href="#booking">Book Now</a>
+            </li>
+          </ul>
         </div>
-        <div class="col-12 col-md-8">
-          <div class="row g-0">
-            <div class="col-12 col-md-7">
-              <div class="card rounded-4 mx-3 bg-primary position-relative border-0">
-                <div class="float-end m-2">
-                  <img
-                    src="assets/Images/about-icon.png"
-                    alt=""
-                    class="float-end w-20"
-                  />
-                </div>
-                <h1
-                  class="px-3 px-md-4 mb-3 text-light position-absolute bottom-0"
-                >
-                  Turning ideas into responsive, user-friendly websites
-                </h1>
-              </div>
+      </div>
+    </nav>
+
+    <!-- ═══════════════ HERO ═══════════════ -->
+    <section class="hero-section">
+      <div class="container">
+        <div
+          class="row align-items-center min-vh-100 g-5"
+          style="padding-top: 2rem"
+        >
+          <div class="col-lg-6">
+            <div class="hero-eyebrow sr">Luxury Nail Studio · Est. 2019</div>
+            <h1 class="hero-title sr">
+              Where every nail<br />tells a <em>beautiful</em><br />story.
+            </h1>
+            <p class="hero-sub sr">
+              Handcrafted nail art, premium treatments, and a sanctuary designed
+              just for you. Book your moment of indulgence today.
+            </p>
+            <div class="d-flex gap-3 align-items-center flex-wrap sr">
+              <a
+                href="#booking"
+                onclick="sendWhatsApp()"
+                class="btn-primary-custom"
+                >Book Appointment</a
+              >
+              <script>
+                function sendWhatsApp() {
+                  let message = "Hello, I want to book an appointment";
+                  let phone = "918693015787";
+
+                  let url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+                  window.open(url, "_blank");
+                }
+              </script>
+              <a href="#services" class="btn-ghost-custom">Explore Services</a>
             </div>
-            <div class="col-12 col-md-5 px-0">
-              <div class="profilePic rounded-4 bg-primary m-3 m-md-0">
-                <!-- <button type="button"  data-bs-toggle="modal" data-bs-target="#exampleModal"> -->
-                  <img
-                    src="assets/Images/portrait_1.jpg"
-                    alt="profile-pic" type="button"  data-bs-toggle="modal" data-bs-target="#exampleModal"
-                    class="portrait object-fit-cover w-107 rounded-4"
-                  />
-                  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered">
-                        <img src="assets/Images/portrait-pic (2).jpg" alt="profile-pic" class="w-100 rounded-4">
-                    </div>
-                  </div>
-                <!-- </button> -->
-              </div>
-            </div>
-            <div class="row g-0 mt-0 mt-md-3">
-              <div class="col-12 col-md-6">
+
+            <!-- stats row -->
+            <div class="row g-0 mt-5 sr">
+              <div
+                class="col-4 text-center border-end"
+                style="border-color: rgba(242, 196, 206, 0.4) !important"
+              >
                 <div
-                  class="card2 rounded-4 bg-primary p-3 m-3 mt-0 m-md-0 ms-md-3 position-relative"
+                  style="
+                    font-family: &quot;Playfair Display&quot;, serif;
+                    font-size: 2rem;
+                    color: var(--ink);
+                  "
                 >
-                  <img
-                    src="assets/Images/flower-animation.gif"
-                    alt="about-icon"
-                    class="w-15"
-                  />
-                  <p class="intro position-absolute bottom-0">
-                    I’m Soni Yadav, a Web Developer passionate about building
-                    responsive, accessible, and visually engaging websites.
-                    Skilled in HTML, CSS, JavaScript, Bootstrap, GSAP, jQuery
-                    and React — I focus on creating seamless UI/UX with
-                    performance in mind.
-                  </p>
+                  500+
+                </div>
+                <div
+                  style="
+                    font-size: 11px;
+                    letter-spacing: 0.1em;
+                    text-transform: uppercase;
+                    color: var(--mink-lt);
+                  "
+                >
+                  Happy Clients
                 </div>
               </div>
-              <div class="col-12 col-md-6 px-0">
+              <div
+                class="col-4 text-center border-end"
+                style="border-color: rgba(242, 196, 206, 0.4) !important"
+              >
                 <div
-                  class="card3 position-relative rounded-4 bg-secondary p-3 px-4 mx-3"
+                  style="
+                    font-family: &quot;Playfair Display&quot;, serif;
+                    font-size: 2rem;
+                    color: var(--ink);
+                  "
                 >
-                  <p class="contact_heading clr-primary">
-                    Have a project in mind? Let’s collaborate.
-                  </p>
-                  <h1 class=" position-absolute bottom-0 mb-3">
-                      <a href="contact.html" class="text-light text-decoration-none
-                      ">
-                        Contact Me
-                        <img
-                          src="assets/Images/link.png"
-                          alt="contact_link"
-                          style="width: 6%"
-                        />
-                      </a>
-                    </span>
-                  </h1>
+                  6+
+                </div>
+                <div
+                  style="
+                    font-size: 11px;
+                    letter-spacing: 0.1em;
+                    text-transform: uppercase;
+                    color: var(--mink-lt);
+                  "
+                >
+                  Years Experience
+                </div>
+              </div>
+              <div class="col-4 text-center">
+                <div
+                  style="
+                    font-family: &quot;Playfair Display&quot;, serif;
+                    font-size: 2rem;
+                    color: var(--ink);
+                  "
+                >
+                  12
+                </div>
+                <div
+                  style="
+                    font-size: 11px;
+                    letter-spacing: 0.1em;
+                    text-transform: uppercase;
+                    color: var(--mink-lt);
+                  "
+                >
+                  Services
                 </div>
               </div>
             </div>
           </div>
+
+          <div class="col-lg-6 d-flex justify-content-center">
+            <div class="hero-cards-wrap">
+              <div
+                class="hcard hcard-1"
+                style="
+                  background-image: url(&quot;assets/images/hero-image.png&quot;);
+                  background-position: center;
+                  background-size: cover;
+                "
+              >
+                <div class="hcard-label text-white">Nail Art</div>
+              </div>
+              <div
+                class="hcard hcard-2"
+                style="
+                  background-image: url(&quot;assets/images/hero-image1.png&quot;);
+                  background-position: center;
+                  background-size: cover;
+                "
+              >
+                <div class="hcard-label text-white">Gel Polish</div>
+              </div>
+              <div
+                class="hcard hcard-3"
+                style="
+                  background-image: url(&quot;assets/images/hero-image2.png&quot;);
+                  background-position: center;
+                  background-size: cover;
+                "
+              >
+                <div class="hcard-label text-white">Manicure</div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="col-12 col-md-4">
-          <div class="row g-0">
-            <div class="col-12">
-              <div class="card4 rounded-4 bg-primary p-3 p-md-4 m-3 m-md-0">
-                <div class="accordion" id="accordionExample">
-                  <div
-                    class="accordion-item border-0 border-bottom border-light"
-                  >
-                    <h2 class="accordion-header">
-                      <button
-                        class="accordion-button"
-                        type="button"
-                        data-bs-toggle="collapse"
-                        data-bs-target="#collapseOne"
-                        aria-expanded="true"
-                        aria-controls="collapseOne"
-                      >
-                        <h6 class="text-light">Project 1</h6>
-                      </button>
-                    </h2>
-                    <div
-                      id="collapseOne"
-                      class="accordion-collapse collapse show open"
-                      data-bs-parent="#accordionExample"
-                    >
-                      <div class="accordion-body p-0 pb-4">
-                        <a href="project1.html">
-                          <img
-                            src="assets/Images/project1.png"
-                            alt="project"
-                            class="w-100 rounded-4"
-                          />
+      </div>
+    </section>
 
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    class="accordion-item border-0 border-bottom border-light"
-                  >
-                    <h2 class="accordion-header">
-                      <button
-                        class="accordion-button collapsed"
-                        type="button"
-                        data-bs-toggle="collapse"
-                        data-bs-target="#collapseTwo"
-                        aria-expanded="false"
-                        aria-controls="collapseTwo"
-                      >
-                        <Project class="text-light">Project 2</h6>
-                      </button>
-                    </h2>
-                    <div
-                      id="collapseTwo"
-                      class="accordion-collapse collapse"
-                      data-bs-parent="#accordionExample"
-                    >
-                      <div class="accordion-body p-0 pb-4">
-                        <a href="project2.html">
-                          <img
-                            src="assets/Images/project2.png"
-                            alt="project"
-                            class="w-100 rounded-4"
-                          />
+    <div class="wave-div"></div>
 
-                        </a>
-                      </div>
-                    </div>
-                  </div>
+    <!-- ═══════════════ SERVICES ═══════════════ -->
+    <section class="services-section" id="services">
+      <div class="container">
+        <div class="text-center mb-5">
+          <div class="s-eyebrow sr">What We Offer</div>
+          <h2 class="s-title sr">Our <em>Signature</em> Services</h2>
+          <p class="s-sub mx-auto mt-2 sr" style="max-width: 500px">
+            Every treatment is performed with premium products, precision tools,
+            and a whole lot of love.
+          </p>
+        </div>
 
-                  <div class="accordion-item border-0">
-                    <h2 class="accordion-header">
-                      <button
-                        class="accordion-button collapsed"
-                        type="button"
-                        data-bs-toggle="collapse"
-                        data-bs-target="#collapseThree"
-                        aria-expanded="false"
-                        aria-controls="collapseThree"
-                      >
-                        <h6 class="text-light">Project 3</h6>
-                      </button>
-                    </h2>
-                    <div
-                      id="collapseThree"
-                      class="accordion-collapse collapse"
-                      data-bs-parent="#accordionExample"
-                    >
-                      <div class="accordion-body p-0 pb-4">
-                        <a href="project3.html">
-                          <img
-                            src="assets/Images/project3.png"
-                            alt="project"
-                            class="w-100 rounded-4"
-                          />
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+        <!-- Row 1: Manicure & Pedicure -->
+        <div class="row g-4 mb-4">
+          <div class="col-12 mb-2">
+            <div
+              class="s-eyebrow"
+              style="font-size: 10px; letter-spacing: 0.18em"
+            >
+              — Hands & Feet
+            </div>
+          </div>
+          <div class="col-sm-6 col-lg-3 sr">
+            <div class="service-card">
+              <div class="svc-badge">Popular</div>
+              <div class="svc-icon-wrap">💅</div>
+              <div class="svc-name">Classic Manicure</div>
+              <div class="svc-desc">
+                Shape, buff, cuticle care and your choice of regular polish
+                color from 100+ shades.
+              </div>
+              <div class="svc-price">From ₹499</div>
+              <div class="svc-duration">45 min</div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-lg-3 sr">
+            <div class="service-card">
+              <div class="svc-icon-wrap">🌸</div>
+              <div class="svc-name">Spa Manicure</div>
+              <div class="svc-desc">
+                Includes a luxurious hand soak, exfoliation, massage with rose
+                cream, and polish finish.
+              </div>
+              <div class="svc-price">From ₹799</div>
+              <div class="svc-duration">60 min</div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-lg-3 sr">
+            <div class="service-card">
+              <div class="svc-badge">Popular</div>
+              <div class="svc-icon-wrap">🦶</div>
+              <div class="svc-name">Classic Pedicure</div>
+              <div class="svc-desc">
+                Foot soak, callus removal, cuticle care, nail shaping and a
+                refreshing polish finish.
+              </div>
+              <div class="svc-price">From ₹649</div>
+              <div class="svc-duration">50 min</div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-lg-3 sr">
+            <div class="service-card">
+              <div class="svc-icon-wrap">🌺</div>
+              <div class="svc-name">Spa Pedicure</div>
+              <div class="svc-desc">
+                Hot stone massage, milk-honey soak, intensive heel scrub, mask
+                and paraffin treatment.
+              </div>
+              <div class="svc-price">From ₹999</div>
+              <div class="svc-duration">75 min</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Row 2: Gel & Extensions -->
+        <div class="row g-4 mb-4">
+          <div class="col-12 mb-2">
+            <div
+              class="s-eyebrow"
+              style="font-size: 10px; letter-spacing: 0.18em"
+            >
+              — Gel & Extensions
+            </div>
+          </div>
+          <div class="col-sm-6 col-lg-3 sr">
+            <div class="service-card">
+              <div class="svc-icon-wrap">✨</div>
+              <div class="svc-name">Gel Polish</div>
+              <div class="svc-desc">
+                Long-lasting gel formula that stays chip-free for up to 3 weeks
+                with a high-gloss finish.
+              </div>
+              <div class="svc-price">From ₹599</div>
+              <div class="svc-duration">50 min</div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-lg-3 sr">
+            <div class="service-card">
+              <div class="svc-badge">Best Seller</div>
+              <div class="svc-icon-wrap">💎</div>
+              <div class="svc-name">Gel Extensions</div>
+              <div class="svc-desc">
+                Sculpted gel extensions to your ideal length and shape — almond,
+                coffin, stiletto or square.
+              </div>
+              <div class="svc-price">From ₹1,199</div>
+              <div class="svc-duration">90 min</div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-lg-3 sr">
+            <div class="service-card">
+              <div class="svc-icon-wrap">💅</div>
+              <div class="svc-name">Acrylic Nails</div>
+              <div class="svc-desc">
+                Durable acrylic extensions for extra strength and length with
+                your choice of color or design.
+              </div>
+              <div class="svc-price">From ₹999</div>
+              <div class="svc-duration">80 min</div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-lg-3 sr">
+            <div class="service-card">
+              <div class="svc-icon-wrap">🌟</div>
+              <div class="svc-name">BIAB Overlay</div>
+              <div class="svc-desc">
+                Builder in a bottle — strengthens natural nails while adding a
+                gorgeous glossy layer on top.
+              </div>
+              <div class="svc-price">From ₹849</div>
+              <div class="svc-duration">60 min</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Row 3: Nail Art & Extras -->
+        <div class="row g-4">
+          <div class="col-12 mb-2">
+            <div
+              class="s-eyebrow"
+              style="font-size: 10px; letter-spacing: 0.18em"
+            >
+              — Nail Art & Extras
+            </div>
+          </div>
+          <div class="col-sm-6 col-lg-3 sr">
+            <div class="service-card">
+              <div class="svc-badge">Creative</div>
+              <div class="svc-icon-wrap">🎨</div>
+              <div class="svc-name">Custom Nail Art</div>
+              <div class="svc-desc">
+                Hand-painted designs: florals, abstract, geometric, ombre,
+                French, 3D gems and more.
+              </div>
+              <div class="svc-price">From ₹299</div>
+              <div class="svc-duration">30–60 min</div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-lg-3 sr">
+            <div class="service-card">
+              <div class="svc-icon-wrap">🌙</div>
+              <div class="svc-name">Chrome & Foil</div>
+              <div class="svc-desc">
+                Metallic chrome powder, holographic foil, and mirror effects for
+                a show-stopping finish.
+              </div>
+              <div class="svc-price">From ₹199</div>
+              <div class="svc-duration">20 min</div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-lg-3 sr">
+            <div class="service-card">
+              <div class="svc-icon-wrap">💆</div>
+              <div class="svc-name">Hand Massage</div>
+              <div class="svc-desc">
+                A relaxing 20-minute hand and forearm massage with warm rose oil
+                — the perfect add-on.
+              </div>
+              <div class="svc-price">From ₹249</div>
+              <div class="svc-duration">20 min</div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-lg-3 sr">
+            <div class="service-card">
+              <div class="svc-icon-wrap">🧴</div>
+              <div class="svc-name">Paraffin Wax</div>
+              <div class="svc-desc">
+                Warm paraffin wax treatment that deeply moisturises, softens
+                skin and relieves stiffness.
+              </div>
+              <div class="svc-price">From ₹349</div>
+              <div class="svc-duration">25 min</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="wave-div"></div>
+
+    <!-- ═══════════════ GALLERY ═══════════════ -->
+    <section class="gallery-section" id="gallery">
+      <div class="text-center mb-4 px-3 sr">
+        <div class="s-eyebrow">Our Work</div>
+        <h2 class="s-title">A glimpse of our <em>artistry</em></h2>
+      </div>
+      <div class="gallery-track">
+        <div class="g-item">
+          <div class="g-placeholder gc1">
+            <img
+              src="assets/images/about-image.png"
+              alt="nail art"
+              style="object-fit: cover"
+            />
+          </div>
+        </div>
+        <div class="g-item">
+          <div class="g-placeholder gc2">
+            <img
+              src="assets/images/hero-image.png"
+              alt="nail art"
+              style="object-fit: cover"
+            />
+          </div>
+        </div>
+        <div class="g-item">
+          <div class="g-placeholder gc3">
+            <img
+              src="assets/images/hero-image1.png"
+              alt="nail art"
+              style="object-fit: cover"
+            />
+          </div>
+        </div>
+        <div class="g-item">
+          <div class="g-placeholder gc4">
+            <img
+              src="assets/images/hero-image2.png"
+              alt="nail art"
+              style="object-fit: cover"
+            />
+          </div>
+        </div>
+        <div class="g-item">
+          <div class="g-placeholder gc5">
+            <img
+              src="assets/images/about-image.png"
+              alt="nail art"
+              style="object-fit: cover"
+            />
+          </div>
+        </div>
+        <div class="g-item">
+          <div class="g-placeholder gc6">
+            <img
+              src="assets/images/hero-image.png"
+              alt="nail art"
+              style="object-fit: cover"
+            />
+          </div>
+        </div>
+        <div class="g-item">
+          <div class="g-placeholder gc1">
+            <img
+              src="assets/images/hero-image1.png"
+              alt="nail art"
+              style="object-fit: cover"
+            />
+          </div>
+        </div>
+        <div class="g-item">
+          <div class="g-placeholder gc2">
+            <img
+              src="assets/images/hero-image2.png"
+              alt="nail art"
+              style="object-fit: cover"
+            />
+          </div>
+        </div>
+        <div class="g-item">
+          <div class="g-placeholder gc3">
+            <img
+              src="assets/images/about-image.png"
+              alt="nail art"
+              style="object-fit: cover"
+            />
+          </div>
+        </div>
+        <div class="g-item">
+          <div class="g-placeholder gc4">
+            <img
+              src="assets/images/hero-image.png"
+              alt="nail art"
+              style="object-fit: cover"
+            />
+          </div>
+        </div>
+        <div class="g-item">
+          <div class="g-placeholder gc5">
+            <img
+              src="assets/images/hero-image1.png"
+              alt="nail art"
+              style="object-fit: cover"
+            />
+          </div>
+        </div>
+        <div class="g-item">
+          <div class="g-placeholder gc6">
+            <img
+              src="assets/images/hero-image2.png"
+              alt="nail art"
+              style="object-fit: cover"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="wave-div"></div>
+
+    <!-- ═══════════════ BOOKING ═══════════════ -->
+    <section class="booking-section" id="booking">
+      <div class="container">
+        <div class="text-center mb-5">
+          <div class="s-eyebrow sr">Online Booking</div>
+          <h2 class="s-title sr">Reserve your <em>perfect moment</em></h2>
+          <p class="s-sub mx-auto mt-2 sr" style="max-width: 460px">
+            Pick your service, choose a time, and we'll send a confirmation
+            straight to your inbox.
+          </p>
+        </div>
+
+        <div class="row g-5 align-items-start justify-content-center">
+          <!-- Info column -->
+          <div class="col-lg-4 sr">
+            <div class="booking-info-card">
+              <div class="avail-badge mb-3">
+                <span class="avail-dot"></span> Accepting Bookings
+              </div>
+              <h4
+                style="
+                  font-family: &quot;Playfair Display&quot;, serif;
+                  font-weight: 400;
+                  color: var(--ink);
+                  margin-bottom: 0.5rem;
+                "
+              >
+                Studio
+                <em style="font-style: italic; color: var(--deep)">Hours</em>
+              </h4>
+              <p
+                style="
+                  font-size: 13px;
+                  color: var(--mink-lt);
+                  margin-bottom: 1.5rem;
+                "
+              >
+                Walk-ins welcome when available.
+              </p>
+              <div class="hours-row">
+                <span>Mon – Fri</span><span>10 AM – 8 PM</span>
+              </div>
+              <div class="hours-row">
+                <span>Saturday</span><span>9 AM – 9 PM</span>
+              </div>
+              <div class="hours-row">
+                <span>Sunday</span><span>11 AM – 6 PM</span>
               </div>
 
-              <!--  -->
-            </div>
-            <div class="col-12">
-              <div
-                class="card5 align-content-center mt-3 bg-primary rounded-4 mx-3 mx-md-0"
+              <hr
+                style="border-color: rgba(201, 125, 142, 0.2); margin: 1.5rem 0"
+              />
+
+              <h6
+                style="
+                  font-size: 11px;
+                  letter-spacing: 0.12em;
+                  text-transform: uppercase;
+                  color: var(--mink);
+                  margin-bottom: 1rem;
+                "
               >
-                <div class="d-flex align-items-center justify-content-evenly">
-                  <p class="py-3 text-center">
-                    <a class="social-icon" href="https://www.linkedin.com/in/SoniYadav29" target="_blank"><img
-                        src="assets/Images/linkedin.png"
-                        alt="linkedin"
-                        class="social-icon"
-                    /></a>
-                  </p>
-                  <p class="py-3 text-center">
-                    <a href="https://github.com/SoniYadav29" target="_blank"><img
-                        src="assets/Images/github.png"
-                        alt="github"
-                        class="social-icon"
-                    /></a>
-                  </p>
-                  <p class="py-3 text-center">
-                    <a href="https://www.instagram.com/soniii_0_2" target="_blank"><img
-                        src="assets/Images/instagram.png"
-                        alt="instagram"
-                        class="social-icon"
-                    /></a>
-                  </p>
+                Find Us
+              </h6>
+              <p
+                style="font-size: 13px; color: var(--mink-lt); line-height: 1.7"
+              >
+                📍 12, Petal Lane, Bandra West<br />Mumbai – 400050<br /><br />
+                📞 +91 98765 43210<br />
+                ✉️ hello@petalandpolish.in
+              </p>
+            </div>
+          </div>
+
+          <!-- Form column -->
+          <div class="col-lg-7 sr">
+            <div class="booking-form-card">
+              <h4
+                style="
+                  font-family: &quot;Playfair Display&quot;, serif;
+                  font-weight: 600;
+                  color: var(--ink);
+                  margin-bottom: 0.2rem;
+                "
+              >
+                Book Appointment
+              </h4>
+              <p
+                style="
+                  font-size: 12px;
+                  color: var(--mink-lt);
+                  margin-bottom: 2rem;
+                "
+              >
+                Fill in your details below ✦
+              </p>
+
+              <form id="apptForm" onsubmit="submitBooking(event)">
+                <div class="row g-3">
+                  <div class="col-sm-6">
+                    <label class="form-label-custom">First Name *</label>
+                    <input
+                      type="text"
+                      class="form-control form-control-custom"
+                      placeholder="Priya"
+                      required
+                    />
+                  </div>
+                  <div class="col-sm-6">
+                    <label class="form-label-custom">Last Name *</label>
+                    <input
+                      type="text"
+                      class="form-control form-control-custom"
+                      placeholder="Sharma"
+                      required
+                    />
+                  </div>
+
+                  <div class="col-sm-6">
+                    <label class="form-label-custom">Email Address *</label>
+                    <input
+                      type="email"
+                      class="form-control form-control-custom"
+                      placeholder="priya@example.com"
+                      required
+                    />
+                  </div>
+                  <div class="col-sm-6">
+                    <label class="form-label-custom">Phone Number</label>
+                    <input
+                      type="tel"
+                      class="form-control form-control-custom"
+                      placeholder="+91 98765 43210"
+                    />
+                  </div>
+
+                  <div class="col-12">
+                    <label class="form-label-custom">Select Service *</label>
+                    <select class="form-select form-select-custom" required>
+                      <option value="" disabled selected>
+                        Choose a service…
+                      </option>
+                      <optgroup label="Manicure">
+                        <option>Classic Manicure — ₹499</option>
+                        <option>Spa Manicure — ₹799</option>
+                      </optgroup>
+                      <optgroup label="Pedicure">
+                        <option>Classic Pedicure — ₹649</option>
+                        <option>Spa Pedicure — ₹999</option>
+                      </optgroup>
+                      <optgroup label="Gel & Extensions">
+                        <option>Gel Polish — ₹599</option>
+                        <option>Gel Extensions — ₹1,199</option>
+                        <option>Acrylic Nails — ₹999</option>
+                        <option>BIAB Overlay — ₹849</option>
+                      </optgroup>
+                      <optgroup label="Nail Art & Extras">
+                        <option>Custom Nail Art — ₹299</option>
+                        <option>Chrome & Foil — ₹199</option>
+                        <option>Hand Massage — ₹249</option>
+                        <option>Paraffin Wax — ₹349</option>
+                      </optgroup>
+                    </select>
+                  </div>
+
+                  <div class="col-sm-6">
+                    <label class="form-label-custom">Preferred Date *</label>
+                    <input
+                      type="date"
+                      class="form-control form-control-custom"
+                      id="dateInput"
+                      required
+                    />
+                  </div>
+                  <div class="col-sm-6">
+                    <label class="form-label-custom">Nail Technician</label>
+                    <select class="form-select form-select-custom">
+                      <option value="">No preference</option>
+                      <option>Meera</option>
+                      <option>Ananya</option>
+                      <option>Riya</option>
+                    </select>
+                  </div>
+
+                  <div class="col-12">
+                    <label class="form-label-custom"
+                      >Available Time Slots *</label
+                    >
+                    <div
+                      class="row row-cols-4 row-cols-sm-8 g-2 mt-1"
+                      id="timeSlots"
+                    >
+                      <div class="col">
+                        <div class="time-slot" onclick="pickSlot(this)">
+                          10:00
+                        </div>
+                      </div>
+                      <div class="col">
+                        <div class="time-slot" onclick="pickSlot(this)">
+                          11:00
+                        </div>
+                      </div>
+                      <div class="col">
+                        <div class="time-slot booked">12:00</div>
+                      </div>
+                      <div class="col">
+                        <div class="time-slot" onclick="pickSlot(this)">
+                          13:00
+                        </div>
+                      </div>
+                      <div class="col">
+                        <div class="time-slot booked">14:00</div>
+                      </div>
+                      <div class="col">
+                        <div class="time-slot" onclick="pickSlot(this)">
+                          15:00
+                        </div>
+                      </div>
+                      <div class="col">
+                        <div class="time-slot" onclick="pickSlot(this)">
+                          16:00
+                        </div>
+                      </div>
+                      <div class="col">
+                        <div class="time-slot" onclick="pickSlot(this)">
+                          17:00
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-12">
+                    <label class="form-label-custom">Special Requests</label>
+                    <textarea
+                      class="form-control form-control-custom"
+                      rows="3"
+                      placeholder="Any allergies, design inspiration, or preferences…"
+                      style="resize: none"
+                    ></textarea>
+                  </div>
+
+                  <div class="col-12 mt-2">
+                    <button
+                      type="submit"
+                      onclick="sendWhatsApp()"
+                      class="btn-book-now"
+                    >
+                      Confirm Booking →
+                    </button>
+                  </div>
+                </div>
+              </form>
+
+              <!-- Success -->
+              <div class="booking-success" id="bookingSuccess">
+                <div class="success-emoji">🌸</div>
+                <h4
+                  style="
+                    font-family: &quot;Playfair Display&quot;, serif;
+                    font-weight: 400;
+                    color: var(--ink);
+                    margin-bottom: 0.5rem;
+                  "
+                >
+                  You're all booked!
+                </h4>
+                <p style="font-size: 13px; color: var(--mink-lt)">
+                  A confirmation has been sent to your email.<br />We can't wait
+                  to see you at the studio!
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="wave-div"></div>
+
+    <!-- ═══════════════ TESTIMONIALS ═══════════════ -->
+    <section class="testi-section">
+      <div class="container">
+        <div class="text-center mb-5">
+          <div class="s-eyebrow sr">Client Love</div>
+          <h2 class="s-title sr">What our clients <em>say</em></h2>
+        </div>
+        <div class="row g-4">
+          <div class="col-md-4 sr">
+            <div class="testi-card">
+              <div class="testi-stars">★★★★★</div>
+              <p class="testi-text">
+                "The nail art here is absolutely stunning. I've been coming
+                every month for a year and I'm never disappointed. The attention
+                to detail is unmatched!"
+              </p>
+              <div class="d-flex align-items-center gap-2">
+                <div class="testi-avatar">A</div>
+                <div>
+                  <div class="testi-name">Ananya Mehta</div>
+                  <div class="testi-role">Regular Client</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 sr">
+            <div class="testi-card">
+              <div class="testi-stars">★★★★★</div>
+              <p class="testi-text">
+                "Booked online in under 2 minutes! The gel extensions lasted 3
+                full weeks without a single chip. Pure luxury at an amazing
+                price."
+              </p>
+              <div class="d-flex align-items-center gap-2">
+                <div class="testi-avatar">R</div>
+                <div>
+                  <div class="testi-name">Riya Kapoor</div>
+                  <div class="testi-role">New Client</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 sr">
+            <div class="testi-card">
+              <div class="testi-stars">★★★★★</div>
+              <p class="testi-text">
+                "The spa pedicure is worth every rupee. The ambiance is so
+                calming, the staff so kind — it's my favourite self-care ritual
+                now."
+              </p>
+              <div class="d-flex align-items-center gap-2">
+                <div class="testi-avatar">S</div>
+                <div>
+                  <div class="testi-name">Simran Kaur</div>
+                  <div class="testi-role">Loyal Client</div>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </section>
 
-    <script src="	https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.23/dist/lenis.min.js"></script>
+    <!-- ═══════════════ FOOTER ═══════════════ -->
+    <footer class="footer-section">
+      <div class="container">
+        <div class="row g-5 pb-4">
+          <div class="col-lg-4">
+            <div class="footer-brand mb-2">Petal <span>&</span> Polish</div>
+            <p style="font-size: 13px; line-height: 1.75; max-width: 280px">
+              A luxury nail studio dedicated to making you feel beautiful, one
+              nail at a time. Located in the heart of Mumbai.
+            </p>
+          </div>
+          <div class="col-sm-4 col-lg-2">
+            <div class="footer-heading">Navigate</div>
+            <a class="footer-link" href="#services">Services</a>
+            <a class="footer-link" href="#gallery">Gallery</a>
+            <a
+              class="footer-link"
+              onclick="sendWhatsApp()"
+              href="javascript:void(0)"
+              >Book Now</a
+            >
+          </div>
+          <div class="col-sm-4 col-lg-3">
+            <div class="footer-heading">Services</div>
+            <a class="footer-link" href="#">Manicure & Pedicure</a>
+            <a class="footer-link" href="#">Gel Extensions</a>
+            <a class="footer-link" href="#">Nail Art</a>
+            <a class="footer-link" href="#">Paraffin Wax</a>
+          </div>
+          <div class="col-sm-4 col-lg-3">
+            <div class="footer-heading">Contact</div>
+            <a class="footer-link" href="#">+91 98765 43210</a>
+            <a class="footer-link" href="#">hello@petalandpolish.in</a>
+            <a class="footer-link" href="#">Bandra West, Mumbai</a>
+          </div>
+        </div>
+        <hr class="footer-divider" />
+        <div
+          class="d-flex flex-column flex-sm-row justify-content-between align-items-center gap-2 pt-2"
+        >
+          <span class="footer-copy"
+            >© 2026 Petal & Polish. All rights reserved.</span
+          >
+          <span class="footer-copy">Made with 🌸 in Mumbai</span>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
     <script>
-      // /assets/js/animation.js
+      /* ── CURSOR ── */
+      const cur = document.getElementById("cur");
+      const ring = document.getElementById("cur-ring");
+      let mx = 0,
+        my = 0,
+        rx = 0,
+        ry = 0;
 
-document.addEventListener("DOMContentLoaded", () => {
-  const profilePic = document.querySelector(".profilePic");
-  const navbar = document.querySelector("nav.navbar");
-  const cardsToShow = [
-    ".card",   // main heading card
-    ".card2",  // about card
-    ".card3",  // contact card
-    ".card4",  // projects accordion card
-    ".card5",  // social icons card
-  ].map(selector => document.querySelector(selector));
+      document.addEventListener("mousemove", (e) => {
+        mx = e.clientX;
+        my = e.clientY;
+        cur.style.left = mx + "px";
+        cur.style.top = my + "px";
+      });
+      (function lerp() {
+        rx += (mx - rx) * 0.11;
+        ry += (my - ry) * 0.11;
+        ring.style.left = rx + "px";
+        ring.style.top = ry + "px";
+        requestAnimationFrame(lerp);
+      })();
+      document
+        .querySelectorAll("a,button,.time-slot,.service-card")
+        .forEach((el) => {
+          el.addEventListener("mouseenter", () => {
+            cur.style.width = "18px";
+            cur.style.height = "18px";
+            ring.style.width = "52px";
+            ring.style.height = "52px";
+            ring.style.borderColor = "rgba(201,125,142,0.8)";
+          });
+          el.addEventListener("mouseleave", () => {
+            cur.style.width = "9px";
+            cur.style.height = "9px";
+            ring.style.width = "34px";
+            ring.style.height = "34px";
+            ring.style.borderColor = "rgba(201,125,142,0.45)";
+          });
+        });
 
-  // Get the final position and size of profilePic container in the layout
-  const finalRect = profilePic.getBoundingClientRect();
+      /* radial glow on service cards */
+      document.querySelectorAll(".service-card").forEach((card) => {
+        card.addEventListener("mousemove", (e) => {
+          const r = card.getBoundingClientRect();
+          card.style.setProperty(
+            "--mx",
+            (((e.clientX - r.left) / r.width) * 100).toFixed(1) + "%",
+          );
+          card.style.setProperty(
+            "--my",
+            (((e.clientY - r.top) / r.height) * 100).toFixed(1) + "%",
+          );
+        });
+      });
 
-  // Calculate viewport center
-  const vw = window.innerWidth;
-  const vh = window.innerHeight;
-  const centerX = vw / 2;
-  const centerY = vh / 2;
+      /* ── PETALS ── */
+      const petalWrap = document.getElementById("petals");
+      const petalColors = [
+        "#F2C4CE",
+        "#FAD8DF",
+        "#E8A0B0",
+        "#FDEAF0",
+        "#F5C8D4",
+      ];
+      function spawnPetal() {
+        const p = document.createElement("div");
+        p.className = "petal";
+        const s = 8 + Math.random() * 10;
+        Object.assign(p.style, {
+          left: Math.random() * 100 + "vw",
+          width: s + "px",
+          height: s * 1.5 + "px",
+          background:
+            petalColors[Math.floor(Math.random() * petalColors.length)],
+          animationDuration: 6 + Math.random() * 8 + "s",
+          animationDelay: Math.random() * 4 + "s",
+          transform: `rotate(${Math.random() * 360}deg)`,
+        });
+        petalWrap.appendChild(p);
+        setTimeout(() => p.remove(), 14000);
+      }
+      setInterval(spawnPetal, 700);
+      for (let i = 0; i < 6; i++) setTimeout(spawnPetal, i * 200);
 
-  // Calculate translation needed to move from center to final position
-  // We'll animate from fixed center (50vw, 50vh) to finalRect position relative to viewport
-  // So translationX = finalRect.left + finalRect.width/2 - centerX
-  // translationY = finalRect.top + finalRect.height/2 - centerY
+      /* ── NAV HIDE ON SCROLL ── */
+      let lastY = 0;
+      const nav = document.getElementById("mainNav");
+      window.addEventListener(
+        "scroll",
+        () => {
+          const y = window.scrollY;
+          nav.style.transform =
+            y > lastY && y > 80 ? "translateY(-100%)" : "translateY(0)";
+          lastY = y;
+        },
+        { passive: true },
+      );
 
-  const finalCenterX = finalRect.left + finalRect.width / 2;
-  const finalCenterY = finalRect.top + finalRect.height / 2;
+      /* ── SCROLL REVEAL ── */
+      const obs = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e, i) => {
+            if (e.isIntersecting) {
+              setTimeout(() => e.target.classList.add("in"), i * 80);
+              obs.unobserve(e.target);
+            }
+          });
+        },
+        { threshold: 0.1 },
+      );
+      document.querySelectorAll(".sr").forEach((el) => obs.observe(el));
 
-  const translateX = finalCenterX - centerX;
-  const translateY = finalCenterY - centerY;
+      /* ── TIME SLOT ── */
+      function pickSlot(el) {
+        if (el.classList.contains("booked")) return;
+        document
+          .querySelectorAll(".time-slot")
+          .forEach((s) => s.classList.remove("selected"));
+        el.classList.add("selected");
+      }
 
-  // Set initial styles for profilePic wrapper to fixed center, large scale
-  gsap.set(profilePic, {
-    position: "fixed",
-    top: "50%",
-    left: "50%",
-    xPercent: -50,
-    yPercent: -50,
-    width: finalRect.width,
-    height: finalRect.height,
-    borderRadius: "1rem",
-    zIndex: 1000,
-    scale: 2.5,
-    opacity: 0,
-  });
+      /* ── DATE MIN ── */
+      document.getElementById("dateInput").min = new Date()
+        .toISOString()
+        .split("T")[0];
 
-  // Hide navbar and cards, scale down and transparent
-  if (navbar) gsap.set(navbar, { autoAlpha: 0, scale: 0.8, transformOrigin: "top center" });
-  cardsToShow.forEach(card => {
-    if (card) gsap.set(card, { autoAlpha: 0, scale: 0.8, transformOrigin: "top center" });
-  });
-
-  const tl = gsap.timeline();
-
-  // Step 1: Fade in and scale down profilePic from 2.5 to 1 at center
-  tl.to(profilePic, {
-    scale: 1,
-    opacity: 1,
-    duration: 1.5,
-    ease: "power3.out",
-  });
-
-  // Step 2: Move profilePic from center fixed to its final position in layout
-  tl.to(profilePic, {
-    duration: 1.2,
-    ease: "power3.inOut",
-    x: translateX,
-    y: translateY,
-    scale: 1,
-  });
-
-  // Step 3: Reset profilePic styles to normal flow after animation completes
-  tl.set(profilePic, {
-    clearProps: "all",
-  });
-
-  // Step 4: Animate navbar and cards scale and fade in sequentially
-  tl.to(
-    [navbar, ...cardsToShow].filter(Boolean),
-    {
-      autoAlpha: 1,
-      scale: 1,
-      duration: 0.8,
-      ease: "power3.out",
-      stagger: 0.15,
-      transformOrigin: "top center",
-    },
-    "+=0.2"
-  );
-
-  // Lenis smooth scroll
-  const lenis = new Lenis({
-    duration: 1.2,
-    easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-    smoothWheel: true,
-    smoothTouch: false,
-  });
-
-  function raf(time) {
-    lenis.raf(time);
-    requestAnimationFrame(raf);
-  }
-  requestAnimationFrame(raf);
-});
-
+      /* ── BOOKING SUBMIT ── */
+      function submitBooking(e) {
+        e.preventDefault();
+        const btn = e.target.querySelector(".btn-book-now");
+        btn.textContent = "Confirming…";
+        btn.disabled = true;
+        setTimeout(() => {
+          document.getElementById("apptForm").style.display = "none";
+          document.getElementById("bookingSuccess").style.display = "block";
+        }, 1200);
+      }
     </script>
-
-    <script src="/assets/js/animation.js"></script>
   </body>
 </html>
