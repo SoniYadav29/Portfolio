@@ -16,6 +16,10 @@
       referrerpolicy="no-referrer"
     />
     <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&family=Inter:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
       integrity="sha512-c42qTSw/wPZ3/5LBzD+Bw5f7bSF2oxou6wEb+I/lqeaKV5FDIfMvvRp772y4jcJLKuGUOpbJMdg/BTl50fJYAw=="
@@ -42,13 +46,34 @@
         margin: 0%;
       }
 
+      body {
+        font-family: "Inter", sans-serif;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: "Outfit", sans-serif;
+      }
       body,
       html {
-        font-family: "PT Serif", serif;
         gap: 0;
         background-color: #e6cfa9 !important;
         color: #fbf9d1;
         cursor: none; /* hide default cursor */
+      }
+
+      h1 {
+        letter-spacing: -1px;
+        font-weight: 600;
+      }
+
+      p {
+        line-height: 1.6;
+        font-weight: 300;
       }
 
       /* ── CUSTOM CURSOR ── */
@@ -296,6 +321,234 @@
       .accordion-button::after {
         filter: brightness(0) invert(1);
       }
+      /* * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        height: 100%;
+      }
+
+      body {
+        background: #0e0c0f;
+        font-family: "EB Garamond", serif;
+        cursor: none;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem 1rem;
+      } */
+
+      /* ── CURSOR ── */
+      #cur {
+        position: fixed;
+        width: 10px;
+        height: 10px;
+        background: #e8e4dd;
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 99999;
+        transform: translate(-50%, -50%);
+        mix-blend-mode: difference;
+        transition:
+          width 0.18s,
+          height 0.18s;
+      }
+      #cur.big {
+        width: 56px;
+        height: 56px;
+      }
+
+      /* ── OUTER CARD ── */
+      /* .proj-card {
+        width: 100%;
+        max-width: 640px;
+        border: 1.5px solid rgba(232, 228, 221, 0.12);
+        border-radius: 18px;
+        overflow: hidden;
+        padding: 0 2rem;
+      } */
+
+      /* ── EACH ROW ── */
+      .proj-row {
+        border-bottom: 1px solid rgba(232, 228, 221, 0.13);
+        overflow: hidden;
+      }
+      .proj-row:last-child {
+        border-bottom: none;
+      }
+
+      /* Trigger */
+      .proj-trigger {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1.4rem 0;
+        cursor: none;
+        gap: 1rem;
+      }
+
+      .proj-name {
+        font-size: clamp(1.4rem, 3.5vw, 2rem);
+        font-weight: 400;
+        letter-spacing: -0.01em;
+        line-height: 1;
+        transition: color 0.35s ease;
+        user-select: none;
+      }
+
+      /* Arrow icon */
+      .proj-arrow {
+        width: 28px;
+        height: 28px;
+        border: 1px solid rgba(232, 228, 221, 0.2);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        opacity: 0;
+        transition:
+          opacity 0.3s,
+          transform 0.4s ease,
+          border-color 0.3s;
+      }
+      .proj-arrow svg {
+        width: 12px;
+        height: 12px;
+        stroke: #e8e4dd;
+        fill: none;
+        stroke-width: 1.8;
+        transition: transform 0.35s ease;
+      }
+      .proj-row.open .proj-arrow,
+      .proj-trigger:hover .proj-arrow {
+        opacity: 1;
+      }
+      .proj-row.open .proj-arrow {
+        border-color: rgba(232, 228, 221, 0.5);
+      }
+
+      /* ── COLLAPSIBLE PANEL ── */
+      .proj-panel {
+        display: grid;
+        grid-template-rows: 0fr;
+        transition: grid-template-rows 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .proj-panel-inner {
+        overflow: hidden;
+      }
+      .proj-row.open .proj-panel {
+        grid-template-rows: 1fr;
+      }
+
+      /* Preview image box */
+      .proj-img-box {
+        background: #f0ece5;
+        border-radius: 14px;
+        margin-bottom: 1.4rem;
+        position: relative;
+        overflow: hidden;
+        height: 340px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .proj-img-box img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 14px;
+        display: block;
+        transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .proj-row.open .proj-img-box img {
+        transform: scale(1.03);
+      }
+
+      /* Circle frame (like OTHRWRLD) */
+      .proj-img-circle {
+        width: 260px;
+        height: 260px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid rgba(14, 12, 15, 0.25);
+        box-shadow: 0 0 0 8px rgba(14, 12, 15, 0.06);
+        transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .proj-row.open .proj-img-circle {
+        transform: scale(1.04);
+      }
+
+      /* Decorative leaf shapes */
+      .proj-leaf {
+        position: absolute;
+        opacity: 0.18;
+        pointer-events: none;
+      }
+      .proj-leaf-1 {
+        top: 14%;
+        left: 8%;
+        width: 60px;
+        transform: rotate(-20deg);
+      }
+      .proj-leaf-2 {
+        bottom: 18%;
+        right: 9%;
+        width: 50px;
+        transform: rotate(30deg);
+      }
+
+      /* Tags row below image */
+      .proj-info {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 0.25rem 0.25rem;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+      .proj-tags {
+        display: flex;
+        gap: 0.4rem;
+        flex-wrap: wrap;
+      }
+      .proj-tag {
+        font-family: "DM Mono", monospace;
+        font-size: 0.6rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        border: 1px solid rgba(232, 228, 221, 0.18);
+        padding: 0.22rem 0.65rem;
+        border-radius: 50px;
+      }
+      .proj-visit {
+        font-family: "DM Mono", monospace;
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: rgb(141 82 61);
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        transition: color 0.2s;
+      }
+      .proj-visit:hover {
+        color: #e8e4dd;
+      }
+      .proj-visit svg {
+        width: 10px;
+        height: 10px;
+        stroke: currentColor;
+        fill: none;
+        stroke-width: 2;
+      }
     </style>
   </head>
 
@@ -338,7 +591,8 @@
                 <h1
                   class="px-3 px-md-4 mb-3 text-light position-absolute bottom-0"
                 >
-                  Turning ideas into responsive, user-friendly websites
+                  Frontend Developer crafting modern, responsive, and
+                  high-performance web interfaces.
                 </h1>
               </div>
             </div>
@@ -374,7 +628,7 @@
             <div class="row g-0 mt-0 mt-md-3">
               <div class="col-12 col-md-6">
                 <div
-                  class="card2 rounded-4 bg-primary p-3 m-3 mt-0 m-md-0 ms-md-3 position-relative"
+                  class="card2 rounded-4 bg-primary p-4 m-3 mt-0 m-md-0 ms-md-3 position-relative"
                 >
                   <img
                     src="assets/Images/flower-animation.gif"
@@ -382,11 +636,11 @@
                     class="w-15"
                   />
                   <p class="intro position-absolute bottom-0">
-                    I'm Soni Yadav, a Web Developer passionate about building
-                    responsive, accessible, and visually engaging websites.
-                    Skilled in HTML, CSS, JavaScript, Bootstrap, GSAP, jQuery
-                    and React — I focus on creating seamless UI/UX with
-                    performance in mind.
+                    I’m Soni Yadav, a Frontend Developer focused on building
+                    responsive, accessible, and visually refined web interfaces.
+                    Currently working at Prisma.ai, I develop verification
+                    systems, dashboards, and scalable UI solutions with
+                    performance and user experience in mind.
                   </p>
                 </div>
               </div>
@@ -396,19 +650,14 @@
                   class="card3 position-relative rounded-4 bg-secondary p-3 px-4 mx-3"
                 >
                   <p class="contact_heading clr-primary">
-                    Have a project in mind? Let's collaborate.
+                    Let’s build something meaningful together.
                   </p>
                   <h1 class="position-absolute bottom-0 mb-3">
                     <a
                       href="contact.html"
                       class="text-light text-decoration-none"
                     >
-                      Contact Me
-                      <img
-                        src="assets/Images/link.png"
-                        alt="contact_link"
-                        style="width: 6%"
-                      />
+                      Contact Me ↗
                     </a>
                   </h1>
                 </div>
@@ -420,269 +669,346 @@
         <div class="col-12 col-md-4">
           <div class="row g-0">
             <div class="col-12">
-              <div class="card4 rounded-4 bg-primary p-4">
-                <div class="accordion" id="projectAccordion">
-                  <!-- Project 1 (ACTIVE) -->
-                  <div
-                    class="accordion-item border border-light rounded-2 bg-transparent my-2"
-                  >
-                    <h2 class="accordion-header">
-                      <button
-                        class="accordion-button text-light fw-semibold"
-                        type="button"
-                        data-bs-toggle="collapse"
-                        data-bs-target="#projectOne"
-                        aria-expanded="true"
-                      >
-                        Verification System UI
-                      </button>
-                    </h2>
-
-                    <div
-                      id="projectOne"
-                      class="accordion-collapse collapse show"
-                      data-bs-parent="#projectAccordion"
-                    >
-                      <div class="accordion-body text-light">
-                        <p>
-                          A multi-step verification system with structured UI
-                          and seamless user flow.
-                        </p>
-
-                        <ul>
-                          <li>Multi-step form with stepper UI</li>
-                          <li>Clean and user-friendly interface</li>
-                          <li>Responsive design</li>
-                        </ul>
-
-                        <p>
-                          <strong>Tech:</strong> HTML, CSS, JavaScript,
-                          Bootstrap
-                        </p>
-
-                        <div class="mt-2">
-                          <a href="#" class="btn btn-sm">Live</a>
-                          <a href="#" class="btn btn-sm">GitHub</a>
+              <div class="card4 rounded-4 bg-primary">
+                <div id="cur"></div>
+                <div class="proj-card px-4">
+                  <!-- 01 -->
+                  <div class="proj-row" data-index="3">
+                    <div class="proj-trigger">
+                      <span class="proj-name">Nail Salon Website</span>
+                      <span class="proj-arrow">
+                        <svg viewBox="0 0 24 24">
+                          <line x1="7" y1="17" x2="17" y2="7" />
+                          <polyline points="7 7 17 7 17 17" />
+                        </svg>
+                      </span>
+                    </div>
+                    <div class="proj-panel">
+                      <div class="proj-panel-inner">
+                        <div class="proj-img-box" style="background: #ede8e2">
+                          <img
+                            class="proj-img-circle"
+                            src="assets/Images/Petal-Polish.png"
+                            alt="Nail Salon"
+                          />
+                          <svg
+                            class="proj-leaf proj-leaf-1"
+                            viewBox="0 0 60 80"
+                            fill="#0e0c0f"
+                          >
+                            <path
+                              d="M30 0 C10 20 0 45 30 80 C60 45 50 20 30 0Z"
+                            />
+                          </svg>
+                          <svg
+                            class="proj-leaf proj-leaf-2"
+                            viewBox="0 0 60 80"
+                            fill="#0e0c0f"
+                          >
+                            <path
+                              d="M30 0 C10 20 0 45 30 80 C60 45 50 20 30 0Z"
+                            />
+                          </svg>
                         </div>
+                        <div class="proj-info">
+                          <div class="proj-tags">
+                            <span class="proj-tag">HTML</span>
+                            <span class="proj-tag">Bootstrap</span>
+                            <span class="proj-tag">JS</span>
+                          </div>
+                          <a href="#" class="proj-visit"
+                            >Visit
+                            <svg viewBox="0 0 24 24">
+                              <line x1="7" y1="17" x2="17" y2="7" />
+                              <polyline points="7 7 17 7 17 17" /></svg
+                          ></a>
+                        </div>
+                        <div style="height: 1.4rem"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- 02 -->
+                  <div class="proj-row open" data-index="1">
+                    <div class="proj-trigger">
+                      <span class="proj-name">Veri5 Login & Auth UI</span>
+                      <span class="proj-arrow">
+                        <svg viewBox="0 0 24 24">
+                          <line x1="7" y1="17" x2="17" y2="7" />
+                          <polyline points="7 7 17 7 17 17" />
+                        </svg>
+                      </span>
+                    </div>
+                    <div class="proj-panel">
+                      <div class="proj-panel-inner">
+                        <div class="proj-img-box" style="background: #eae7e1">
+                          <img
+                            class="proj-img-circle"
+                            src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=600&q=80"
+                            alt="Veri5 Login"
+                          />
+                          <svg
+                            class="proj-leaf proj-leaf-1"
+                            viewBox="0 0 60 80"
+                            fill="#0e0c0f"
+                          >
+                            <path
+                              d="M30 0 C10 20 0 45 30 80 C60 45 50 20 30 0Z"
+                            />
+                          </svg>
+                          <svg
+                            class="proj-leaf proj-leaf-2"
+                            viewBox="0 0 60 80"
+                            fill="#0e0c0f"
+                          >
+                            <path
+                              d="M30 0 C10 20 0 45 30 80 C60 45 50 20 30 0Z"
+                            />
+                          </svg>
+                        </div>
+                        <div class="proj-info">
+                          <div class="proj-tags">
+                            <span class="proj-tag">HTML</span>
+                            <span class="proj-tag">CSS</span>
+                            <span class="proj-tag">JS</span>
+                            <span class="proj-tag">Bootstrap</span>
+                          </div>
+                          <a href="#" class="proj-visit"
+                            >Visit
+                            <svg viewBox="0 0 24 24">
+                              <line x1="7" y1="17" x2="17" y2="7" />
+                              <polyline points="7 7 17 7 17 17" /></svg
+                          ></a>
+                        </div>
+                        <div style="height: 1.4rem"></div>
                       </div>
                     </div>
                   </div>
 
-                  <!-- Project 2 -->
-                  <div
-                    class="accordion-item border border-light rounded-2 bg-transparent my-2"
-                  >
-                    <h2 class="accordion-header">
-                      <button
-                        class="accordion-button collapsed text-light fw-semibold"
-                        type="button"
-                        data-bs-toggle="collapse"
-                        data-bs-target="#projectTwo"
-                      >
-                        Veri5 Login & Authentication UI
-                      </button>
-                    </h2>
-
-                    <div
-                      id="projectTwo"
-                      class="accordion-collapse collapse"
-                      data-bs-parent="#projectAccordion"
-                    >
-                      <div class="accordion-body text-light">
-                        <p>
-                          A responsive login interface with modern UI and clean
-                          layout.
-                        </p>
-
-                        <ul>
-                          <li>Split-screen layout</li>
-                          <li>Form validation</li>
-                          <li>Mobile responsive</li>
-                        </ul>
-
-                        <p>
-                          <strong>Tech:</strong> HTML, CSS, JavaScript,
-                          Bootstrap
-                        </p>
-
-                        <div class="mt-2">
-                          <a href="#" class="btn btn-sm">Live</a>
-                          <a href="#" class="btn btn-sm">GitHub</a>
+                  <!-- 03 -->
+                  <div class="proj-row" data-index="2">
+                    <div class="proj-trigger">
+                      <span class="proj-name">Animated Portfolio</span>
+                      <span class="proj-arrow">
+                        <svg viewBox="0 0 24 24">
+                          <line x1="7" y1="17" x2="17" y2="7" />
+                          <polyline points="7 7 17 7 17 17" />
+                        </svg>
+                      </span>
+                    </div>
+                    <div class="proj-panel">
+                      <div class="proj-panel-inner">
+                        <div class="proj-img-box" style="background: #e5e0d8">
+                          <img
+                            class="proj-img-circle"
+                            src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=600&q=80"
+                            alt="Portfolio"
+                          />
+                          <svg
+                            class="proj-leaf proj-leaf-1"
+                            viewBox="0 0 60 80"
+                            fill="#0e0c0f"
+                          >
+                            <path
+                              d="M30 0 C10 20 0 45 30 80 C60 45 50 20 30 0Z"
+                            />
+                          </svg>
+                          <svg
+                            class="proj-leaf proj-leaf-2"
+                            viewBox="0 0 60 80"
+                            fill="#0e0c0f"
+                          >
+                            <path
+                              d="M30 0 C10 20 0 45 30 80 C60 45 50 20 30 0Z"
+                            />
+                          </svg>
                         </div>
+                        <div class="proj-info">
+                          <div class="proj-tags">
+                            <span class="proj-tag">GSAP</span>
+                            <span class="proj-tag">JS</span>
+                            <span class="proj-tag">CSS</span>
+                          </div>
+                          <a href="#" class="proj-visit"
+                            >Visit
+                            <svg viewBox="0 0 24 24">
+                              <line x1="7" y1="17" x2="17" y2="7" />
+                              <polyline points="7 7 17 7 17 17" /></svg
+                          ></a>
+                        </div>
+                        <div style="height: 1.4rem"></div>
                       </div>
                     </div>
                   </div>
 
-                  <!-- Project 3 -->
-                  <div
-                    class="accordion-item border border-light rounded-2 bg-transparent my-2"
-                  >
-                    <h2 class="accordion-header">
-                      <button
-                        class="accordion-button collapsed text-light fw-semibold"
-                        type="button"
-                        data-bs-toggle="collapse"
-                        data-bs-target="#projectThree"
-                      >
-                        Animated Portfolio Website
-                      </button>
-                    </h2>
-
-                    <div
-                      id="projectThree"
-                      class="accordion-collapse collapse"
-                      data-bs-parent="#projectAccordion"
-                    >
-                      <div class="accordion-body text-light">
-                        <p>
-                          A modern portfolio with smooth animations and
-                          interactive UI.
-                        </p>
-
-                        <ul>
-                          <li>GSAP animations</li>
-                          <li>Responsive design</li>
-                          <li>Performance optimized</li>
-                        </ul>
-
-                        <p>
-                          <strong>Tech:</strong> HTML, CSS, JavaScript, GSAP
-                        </p>
-
-                        <div class="mt-2">
-                          <a href="#" class="btn btn-sm">Live</a>
-                          <a href="#" class="btn btn-sm">GitHub</a>
+                  <!-- 04 -->
+                  <div class="proj-row" data-index="3">
+                    <div class="proj-trigger">
+                      <span class="proj-name">Nail Salon Website</span>
+                      <span class="proj-arrow">
+                        <svg viewBox="0 0 24 24">
+                          <line x1="7" y1="17" x2="17" y2="7" />
+                          <polyline points="7 7 17 7 17 17" />
+                        </svg>
+                      </span>
+                    </div>
+                    <div class="proj-panel">
+                      <div class="proj-panel-inner">
+                        <div class="proj-img-box" style="background: #ede8e2">
+                          <img
+                            class="proj-img-circle"
+                            src="assets/Images/Petal-Polish.png"
+                            alt="Nail Salon"
+                          />
+                          <svg
+                            class="proj-leaf proj-leaf-1"
+                            viewBox="0 0 60 80"
+                            fill="#0e0c0f"
+                          >
+                            <path
+                              d="M30 0 C10 20 0 45 30 80 C60 45 50 20 30 0Z"
+                            />
+                          </svg>
+                          <svg
+                            class="proj-leaf proj-leaf-2"
+                            viewBox="0 0 60 80"
+                            fill="#0e0c0f"
+                          >
+                            <path
+                              d="M30 0 C10 20 0 45 30 80 C60 45 50 20 30 0Z"
+                            />
+                          </svg>
                         </div>
+                        <div class="proj-info">
+                          <div class="proj-tags">
+                            <span class="proj-tag">HTML</span>
+                            <span class="proj-tag">Bootstrap</span>
+                            <span class="proj-tag">JS</span>
+                          </div>
+                          <a href="#" class="proj-visit"
+                            >Visit
+                            <svg viewBox="0 0 24 24">
+                              <line x1="7" y1="17" x2="17" y2="7" />
+                              <polyline points="7 7 17 7 17 17" /></svg
+                          ></a>
+                        </div>
+                        <div style="height: 1.4rem"></div>
                       </div>
                     </div>
                   </div>
 
-                  <!-- Project 4 -->
-                  <div
-                    class="accordion-item border border-light rounded-2 bg-transparent my-2"
-                  >
-                    <h2 class="accordion-header">
-                      <button
-                        class="accordion-button collapsed text-light fw-semibold"
-                        type="button"
-                        data-bs-toggle="collapse"
-                        data-bs-target="#projectFour"
-                      >
-                        Friends Group Website
-                      </button>
-                    </h2>
-
-                    <div
-                      id="projectFour"
-                      class="accordion-collapse collapse"
-                      data-bs-parent="#projectAccordion"
-                    >
-                      <div class="accordion-body text-light">
-                        <p>
-                          A multi-page website showcasing group members with
-                          custom layouts.
-                        </p>
-
-                        <ul>
-                          <li>10+ pages</li>
-                          <li>Interactive UI</li>
-                          <li>Responsive layout</li>
-                        </ul>
-
-                        <p><strong>Tech:</strong> HTML, CSS, JavaScript</p>
-
-                        <div class="mt-2">
-                          <a href="#" class="btn btn-sm">Live</a>
-                          <a href="#" class="btn btn-sm">GitHub</a>
+                  <!-- 05 -->
+                  <div class="proj-row" data-index="4">
+                    <div class="proj-trigger">
+                      <span class="proj-name">Music Player Web App</span>
+                      <span class="proj-arrow">
+                        <svg viewBox="0 0 24 24">
+                          <line x1="7" y1="17" x2="17" y2="7" />
+                          <polyline points="7 7 17 7 17 17" />
+                        </svg>
+                      </span>
+                    </div>
+                    <div class="proj-panel">
+                      <div class="proj-panel-inner">
+                        <div class="proj-img-box" style="background: #e2ddd6">
+                          <img
+                            class="proj-img-circle"
+                            src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600&q=80"
+                            alt="Music Player"
+                          />
+                          <svg
+                            class="proj-leaf proj-leaf-1"
+                            viewBox="0 0 60 80"
+                            fill="#0e0c0f"
+                          >
+                            <path
+                              d="M30 0 C10 20 0 45 30 80 C60 45 50 20 30 0Z"
+                            />
+                          </svg>
+                          <svg
+                            class="proj-leaf proj-leaf-2"
+                            viewBox="0 0 60 80"
+                            fill="#0e0c0f"
+                          >
+                            <path
+                              d="M30 0 C10 20 0 45 30 80 C60 45 50 20 30 0Z"
+                            />
+                          </svg>
                         </div>
+                        <div class="proj-info">
+                          <div class="proj-tags">
+                            <span class="proj-tag">HTML</span>
+                            <span class="proj-tag">CSS</span>
+                            <span class="proj-tag">JS</span>
+                          </div>
+                          <a href="#" class="proj-visit"
+                            >Visit
+                            <svg viewBox="0 0 24 24">
+                              <line x1="7" y1="17" x2="17" y2="7" />
+                              <polyline points="7 7 17 7 17 17" /></svg
+                          ></a>
+                        </div>
+                        <div style="height: 1.4rem"></div>
                       </div>
                     </div>
                   </div>
 
-                  <!-- Project 5 -->
-                  <div
-                    class="accordion-item border border-light rounded-2 bg-transparent my-2"
-                    style="background-color: #fdb8b830 !important"
-                  >
-                    <h2 class="accordion-header">
-                      <button
-                        class="accordion-button collapsed text-light fw-semibold"
-                        type="button"
-                        data-bs-toggle="collapse"
-                        data-bs-target="#projectFive"
-                      >
-                        Music Player Web App
-                      </button>
-                    </h2>
-
-                    <div
-                      id="projectFive"
-                      class="accordion-collapse collapse"
-                      data-bs-parent="#projectAccordion"
-                    >
-                      <div class="accordion-body text-light">
-                        <p>
-                          A web-based music player with interactive controls.
-                        </p>
-
-                        <ul>
-                          <li>Play/pause functionality</li>
-                          <li>Song switching</li>
-                          <li>Responsive UI</li>
-                        </ul>
-
-                        <p><strong>Tech:</strong> HTML, CSS, JavaScript</p>
-
-                        <div class="mt-2">
-                          <a href="#" class="btn btn-sm">Live</a>
-                          <a href="#" class="btn btn-sm">GitHub</a>
-                        </div>
-                      </div>
+                  <!-- 06 -->
+                  <div class="proj-row" data-index="5">
+                    <div class="proj-trigger">
+                      <span class="proj-name">Temperature Converter</span>
+                      <span class="proj-arrow">
+                        <svg viewBox="0 0 24 24">
+                          <line x1="7" y1="17" x2="17" y2="7" />
+                          <polyline points="7 7 17 7 17 17" />
+                        </svg>
+                      </span>
                     </div>
-                  </div>
-
-                  <!-- Project 6 -->
-                  <div
-                    class="accordion-item border border-light rounded-2 bg-transparent my-2"
-                  >
-                    <h2 class="accordion-header">
-                      <button
-                        class="accordion-button collapsed text-light fw-semibold"
-                        type="button"
-                        data-bs-toggle="collapse"
-                        data-bs-target="#projectSix"
-                      >
-                        Temperature Converter
-                      </button>
-                    </h2>
-
-                    <div
-                      id="projectSix"
-                      class="accordion-collapse collapse"
-                      data-bs-parent="#projectAccordion"
-                    >
-                      <div class="accordion-body text-light">
-                        <p>
-                          A simple temperature conversion tool with real-time
-                          updates.
-                        </p>
-
-                        <ul>
-                          <li>Instant conversion</li>
-                          <li>Input validation</li>
-                          <li>Clean UI</li>
-                        </ul>
-
-                        <p><strong>Tech:</strong> HTML, CSS, JavaScript</p>
-
-                        <div class="mt-2">
-                          <a href="#" class="btn btn-sm">Live</a>
-                          <a href="#" class="btn btn-sm">GitHub</a>
+                    <div class="proj-panel">
+                      <div class="proj-panel-inner">
+                        <div class="proj-img-box" style="background: #e0dbd3">
+                          <img
+                            class="proj-img-circle"
+                            src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=600&q=80"
+                            alt="Temp Converter"
+                          />
+                          <svg
+                            class="proj-leaf proj-leaf-1"
+                            viewBox="0 0 60 80"
+                            fill="#0e0c0f"
+                          >
+                            <path
+                              d="M30 0 C10 20 0 45 30 80 C60 45 50 20 30 0Z"
+                            />
+                          </svg>
+                          <svg
+                            class="proj-leaf proj-leaf-2"
+                            viewBox="0 0 60 80"
+                            fill="#0e0c0f"
+                          >
+                            <path
+                              d="M30 0 C10 20 0 45 30 80 C60 45 50 20 30 0Z"
+                            />
+                          </svg>
                         </div>
+                        <div class="proj-info">
+                          <div class="proj-tags">
+                            <span class="proj-tag">HTML</span>
+                            <span class="proj-tag">CSS</span>
+                            <span class="proj-tag">JS</span>
+                          </div>
+                          <a href="#" class="proj-visit"
+                            >Visit
+                            <svg viewBox="0 0 24 24">
+                              <line x1="7" y1="17" x2="17" y2="7" />
+                              <polyline points="7 7 17 7 17 17" /></svg
+                          ></a>
+                        </div>
+                        <div style="height: 1.4rem"></div>
                       </div>
                     </div>
                   </div>
                 </div>
+                <!-- /proj-card -->
               </div>
             </div>
 
@@ -892,6 +1218,34 @@
           requestAnimationFrame(raf);
         }
         requestAnimationFrame(raf);
+      });
+
+      /* ── CURSOR ── */
+      const cur = document.getElementById("cur");
+      let cx = 0,
+        cy = 0;
+      document.addEventListener("mousemove", (e) => {
+        cx = e.clientX;
+        cy = e.clientY;
+        cur.style.left = cx + "px";
+        cur.style.top = cy + "px";
+      });
+      document.querySelectorAll("a,.proj-trigger").forEach((el) => {
+        el.addEventListener("mouseenter", () => cur.classList.add("big"));
+        el.addEventListener("mouseleave", () => cur.classList.remove("big"));
+      });
+
+      /* ── ACCORDION TOGGLE ── */
+      const rows = document.querySelectorAll(".proj-row");
+
+      rows.forEach((row) => {
+        row.querySelector(".proj-trigger").addEventListener("click", () => {
+          const isOpen = row.classList.contains("open");
+          /* close all */
+          rows.forEach((r) => r.classList.remove("open"));
+          /* open clicked if it was closed */
+          if (!isOpen) row.classList.add("open");
+        });
       });
     </script>
 
