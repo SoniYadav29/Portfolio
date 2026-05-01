@@ -3,11 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Bootstrap CSS -->
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
     />
-    <link rel="stylesheet" href="/assets/CDN/Bootstrap/bootstrap.min.css" />
+
+    <!-- Font Awesome -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
@@ -15,10 +18,14 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+
+    <!-- Google Fonts -->
     <link
       href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&family=Inter:wght@300;400;500&display=swap"
       rel="stylesheet"
     />
+
+    <!-- Animate CSS -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
@@ -26,24 +33,16 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+
     <title>Portfolio</title>
+
     <style>
       @import url("https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&display=swap");
 
-      .pt-serif-regular {
-        font-family: "PT Serif", serif;
-        font-weight: 400;
-        font-style: normal;
-      }
-      .pt-serif-bold {
-        font-family: "PT Serif", serif;
-        font-weight: 700;
-        font-style: normal;
-      }
-
       * {
-        padding: 0%;
-        margin: 0%;
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
       }
 
       body {
@@ -58,12 +57,13 @@
       h6 {
         font-family: "Outfit", sans-serif;
       }
+
       body,
       html {
         gap: 0;
         background-color: #e6cfa9 !important;
         color: #fbf9d1;
-        cursor: none; /* hide default cursor */
+        cursor: none;
       }
 
       h1 {
@@ -76,12 +76,7 @@
         font-weight: 300;
       }
 
-      /* ── CUSTOM CURSOR ── */
-      body,
-      html {
-        cursor: none;
-      }
-
+      /* Custom Cursor */
       #cursor {
         position: fixed;
         width: 10px;
@@ -177,220 +172,72 @@
         z-index: 1;
       }
 
-      /* ── ORIGINAL STYLES ── */
       .main {
         width: 100%;
-        height: 100vh;
+        min-height: 100vh;
       }
+
       .text-light {
         color: #fbf9d1 !important;
       }
+
       .border-light {
         border-color: #8d523d6e !important;
       }
+
       .bg-primary {
         background-color: #c1856d !important;
       }
+
       .bg-secondary {
         background-color: #8d523d !important;
       }
+
       .bg-transparent {
         background-color: #fdb8b830 !important;
       }
+
       .btn {
         border-color: rgb(216 207 188);
         color: rgb(216 207 188);
       }
+
       .w-15 {
         width: 15%;
       }
+
       .w-20 {
         width: 20%;
       }
 
-      .accordion {
-        --accordion-border-color: #565449;
-        --bs-accordion-btn-bg: transparent;
-        --bs-accordion-border-color: transparent;
-        --bs-accordion-active-bg: transparent;
-      }
-      .accordion-item {
-        background-color: transparent;
-        --accordion-border-color: #565449;
-      }
-      .border-secondary {
-        border-color: #565449;
-      }
       .social-icon {
         width: 15%;
         height: auto;
       }
+
       .w-107 {
         width: 107% !important;
       }
 
-      @media screen and (min-width: 768px) {
-        .profilePic {
-          width: 25vw;
-          height: 25vh;
-        }
-        .card {
-          height: 43vh;
-        }
-        .portrait {
-          height: 43vh;
-        }
-        .card2,
-        .card3 {
-          height: 40vh;
-        }
-        .card4 {
-          width: 96%;
-          height: 75vh;
-          overflow-y: auto;
-          scrollbar-width: none;
-          -ms-overflow-style: none;
-        }
-        .card4::-webkit-scrollbar {
-          display: none;
-        }
-        .card5 {
-          width: 96%;
-          height: 8vh;
-        }
-        h1 {
-          font-size: 2.5rem !important;
-          line-height: 1;
-        }
-        .intro {
-          width: 75%;
-          font-size: 0.95rem !important;
-          text-align: justify;
-        }
-        .contact_heading {
-          width: 50%;
-        }
+      .card4 {
+        overflow-y: auto;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
       }
 
-      @media screen and (max-width: 768px) {
-        .btn {
-          font-size: 0.75rem !important;
-          border: none !important;
-        }
-        .profilePic {
-          width: 85% !important;
-          height: auto;
-        }
-        .intro {
-          width: 87%;
-          font-size: 0.75rem !important;
-          text-align: justify;
-        }
-        .card {
-          height: 40vh;
-        }
-        .portrait {
-          width: 100%;
-          height: auto;
-        }
-        .card2 {
-          height: 40vh;
-        }
-        .card3 {
-          height: 25vh;
-        }
-        .contact_heading {
-          width: 75%;
-        }
-        .card4 {
-          width: 92%;
-          height: 96%;
-        }
-        .card5 {
-          width: 92%;
-          height: 70%;
-        }
-        h1 {
-          font-size: 1.5rem !important;
-          line-height: 1.2;
-        }
-        .w-15 {
-          width: 25% !important;
-        }
-
-        /* disable cursor on touch devices */
-        #cursor,
-        #cursor-ring {
-          display: none;
-        }
-        .social-icon {
-          width: 35% !important;
-        }
-      }
-      .accordion-button::after {
-        filter: brightness(0) invert(1);
-      }
-      /* * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-      html,
-      body {
-        height: 100%;
+      .card4::-webkit-scrollbar {
+        display: none;
       }
 
-      body {
-        background: #0e0c0f;
-        font-family: "EB Garamond", serif;
-        cursor: none;
-        min-height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 2rem 1rem;
-      } */
-
-      /* ── CURSOR ── */
-      #cur {
-        position: fixed;
-        width: 10px;
-        height: 10px;
-        background: #e8e4dd;
-        border-radius: 50%;
-        pointer-events: none;
-        z-index: 99999;
-        transform: translate(-50%, -50%);
-        mix-blend-mode: difference;
-        transition:
-          width 0.18s,
-          height 0.18s;
-      }
-      #cur.big {
-        width: 56px;
-        height: 56px;
-      }
-
-      /* ── OUTER CARD ── */
-      /* .proj-card {
-        width: 100%;
-        max-width: 640px;
-        border: 1.5px solid rgba(232, 228, 221, 0.12);
-        border-radius: 18px;
-        overflow: hidden;
-        padding: 0 2rem;
-      } */
-
-      /* ── EACH ROW ── */
       .proj-row {
         border-bottom: 1px solid rgba(232, 228, 221, 0.13);
         overflow: hidden;
       }
+
       .proj-row:last-child {
         border-bottom: none;
       }
 
-      /* Trigger */
       .proj-trigger {
         display: flex;
         align-items: center;
@@ -409,7 +256,6 @@
         user-select: none;
       }
 
-      /* Arrow icon */
       .proj-arrow {
         width: 28px;
         height: 28px;
@@ -425,6 +271,7 @@
           transform 0.4s ease,
           border-color 0.3s;
       }
+
       .proj-arrow svg {
         width: 12px;
         height: 12px;
@@ -433,28 +280,30 @@
         stroke-width: 1.8;
         transition: transform 0.35s ease;
       }
+
       .proj-row.open .proj-arrow,
       .proj-trigger:hover .proj-arrow {
         opacity: 1;
       }
+
       .proj-row.open .proj-arrow {
         border-color: rgba(232, 228, 221, 0.5);
       }
 
-      /* ── COLLAPSIBLE PANEL ── */
       .proj-panel {
         display: grid;
         grid-template-rows: 0fr;
         transition: grid-template-rows 0.5s cubic-bezier(0.4, 0, 0.2, 1);
       }
+
       .proj-panel-inner {
         overflow: hidden;
       }
+
       .proj-row.open .proj-panel {
         grid-template-rows: 1fr;
       }
 
-      /* Preview image box */
       .proj-img-box {
         background: #f0ece5;
         border-radius: 14px;
@@ -467,52 +316,16 @@
         justify-content: center;
       }
 
-      .proj-img-box img {
+      .proj-img-circle {
         width: 100%;
-        height: 100%;
+        height: auto;
         object-fit: cover;
-        border-radius: 14px;
-        display: block;
-        transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-      }
-      .proj-row.open .proj-img-box img {
-        transform: scale(1.03);
       }
 
-      /* Circle frame (like OTHRWRLD) */
-      .proj-img-circle {
-        width: 260px;
-        height: 260px;
-        border-radius: 50%;
-        object-fit: cover;
-        border: 3px solid rgba(14, 12, 15, 0.25);
-        box-shadow: 0 0 0 8px rgba(14, 12, 15, 0.06);
-        transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-      }
       .proj-row.open .proj-img-circle {
         transform: scale(1.04);
       }
 
-      /* Decorative leaf shapes */
-      .proj-leaf {
-        position: absolute;
-        opacity: 0.18;
-        pointer-events: none;
-      }
-      .proj-leaf-1 {
-        top: 14%;
-        left: 8%;
-        width: 60px;
-        transform: rotate(-20deg);
-      }
-      .proj-leaf-2 {
-        bottom: 18%;
-        right: 9%;
-        width: 50px;
-        transform: rotate(30deg);
-      }
-
-      /* Tags row below image */
       .proj-info {
         display: flex;
         align-items: center;
@@ -521,13 +334,14 @@
         gap: 1rem;
         flex-wrap: wrap;
       }
+
       .proj-tags {
         display: flex;
         gap: 0.4rem;
         flex-wrap: wrap;
       }
+
       .proj-tag {
-        font-family: "DM Mono", monospace;
         font-size: 0.6rem;
         letter-spacing: 0.1em;
         text-transform: uppercase;
@@ -535,8 +349,8 @@
         padding: 0.22rem 0.65rem;
         border-radius: 50px;
       }
+
       .proj-visit {
-        font-family: "DM Mono", monospace;
         font-size: 0.75rem;
         font-weight: 600;
         letter-spacing: 0.12em;
@@ -548,9 +362,11 @@
         gap: 5px;
         transition: color 0.2s;
       }
+
       .proj-visit:hover {
         color: #e8e4dd;
       }
+
       .proj-visit svg {
         width: 10px;
         height: 10px;
@@ -558,20 +374,159 @@
         fill: none;
         stroke-width: 2;
       }
+
+      #cur {
+        position: fixed;
+        width: 10px;
+        height: 10px;
+        background: #e8e4dd;
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 99999;
+        transform: translate(-50%, -50%);
+        mix-blend-mode: difference;
+        transition:
+          width 0.18s,
+          height 0.18s;
+      }
+
+      #cur.big {
+        width: 56px;
+        height: 56px;
+      }
+
+      @media screen and (min-width: 768px) {
+        .profilePic {
+          width: 25vw;
+          height: 25vh;
+        }
+
+        .card {
+          height: 43vh;
+        }
+
+        .portrait {
+          height: 43vh;
+        }
+
+        .card2,
+        .card3 {
+          height: 40vh;
+        }
+
+        .card4 {
+          width: 96%;
+          height: 75vh;
+        }
+
+        .card5 {
+          width: 96%;
+          height: 8vh;
+        }
+
+        h1 {
+          font-size: 2.5rem !important;
+          line-height: 1;
+        }
+
+        .intro {
+          width: 75%;
+          font-size: 0.95rem !important;
+          text-align: justify;
+        }
+
+        .contact_heading {
+          width: 50%;
+        }
+      }
+
+      @media screen and (max-width: 768px) {
+        body,
+        html {
+          cursor: auto;
+        }
+
+        .btn {
+          font-size: 0.75rem !important;
+          border: none !important;
+        }
+
+        .profilePic {
+          width: 85% !important;
+          height: auto;
+        }
+
+        .intro {
+          width: 87%;
+          font-size: 0.75rem !important;
+          text-align: justify;
+        }
+
+        .card {
+          height: 40vh;
+        }
+
+        .portrait {
+          width: 100%;
+          height: auto;
+        }
+
+        .card2 {
+          height: 40vh;
+        }
+
+        .card3 {
+          height: 25vh;
+        }
+
+        .contact_heading {
+          width: 75%;
+        }
+
+        .card4 {
+          width: 92%;
+          height: 96%;
+        }
+
+        .card5 {
+          width: 92%;
+          height: 70%;
+        }
+
+        h1 {
+          font-size: 1.5rem !important;
+          line-height: 1.2;
+        }
+
+        .w-15 {
+          width: 25% !important;
+        }
+
+        #cursor,
+        #cursor-ring,
+        #cur {
+          display: none;
+        }
+
+        .social-icon {
+          width: 35% !important;
+        }
+      }
     </style>
   </head>
 
   <body>
-    <!-- CURSOR ELEMENTS -->
+    <!-- Cursor Elements -->
     <div id="cursor"></div>
     <div id="cursor-ring"></div>
 
-    <div class="main">
+    <main class="main">
       <div class="row g-0">
         <div class="col-12">
           <nav class="navbar bg-primary m-3 rounded-4">
             <div class="container-fluid">
-              <a class="navbar-brand text-light fw-bold ms-2">Soni</a>
+              <a class="navbar-brand text-light fw-bold ms-2" href="#">Soni</a>
+
               <form class="d-flex" role="search">
                 <button
                   class="btn btn-outline-success bg-secondary rounded-3 py-2 me-2"
@@ -586,6 +541,7 @@
 
         <div class="col-12 col-md-8">
           <div class="row g-0">
+            <!-- Hero Card -->
             <div class="col-12 col-md-7">
               <div
                 class="card rounded-4 mx-3 bg-primary position-relative border-0"
@@ -593,10 +549,11 @@
                 <div class="float-end m-2">
                   <img
                     src="assets/Images/about-icon.png"
-                    alt=""
+                    alt="about icon"
                     class="float-end w-20"
                   />
                 </div>
+
                 <h1
                   class="px-3 px-md-4 mb-3 text-light position-absolute bottom-0"
                 >
@@ -606,16 +563,18 @@
               </div>
             </div>
 
+            <!-- Profile Image -->
             <div class="col-12 col-md-5 px-0">
               <div class="profilePic rounded-4 bg-primary m-3 m-md-0">
                 <img
                   src="assets/Images/portrait_1.jpg"
-                  alt="profile-pic"
+                  alt="profile pic"
                   type="button"
                   data-bs-toggle="modal"
                   data-bs-target="#exampleModal"
                   class="portrait object-fit-cover w-107 rounded-4"
                 />
+
                 <div
                   class="modal fade"
                   id="exampleModal"
@@ -626,7 +585,7 @@
                   <div class="modal-dialog modal-dialog-centered">
                     <img
                       src="assets/Images/portrait-pic (2).jpg"
-                      alt="profile-pic"
+                      alt="profile pic"
                       class="w-100 rounded-4"
                     />
                   </div>
@@ -635,15 +594,17 @@
             </div>
 
             <div class="row g-0 mt-0 mt-md-3">
+              <!-- About Card -->
               <div class="col-12 col-md-6">
                 <div
                   class="card2 rounded-4 bg-primary p-4 m-3 mt-0 m-md-0 ms-md-3 position-relative"
                 >
                   <img
                     src="assets/Images/flower-animation.gif"
-                    alt="about-icon"
+                    alt="about icon"
                     class="w-15"
                   />
+
                   <p class="intro position-absolute bottom-0">
                     I’m Soni Yadav, a Frontend Developer focused on building
                     responsive, accessible, and visually refined web interfaces.
@@ -654,13 +615,15 @@
                 </div>
               </div>
 
+              <!-- Contact Card -->
               <div class="col-12 col-md-6 px-0">
                 <div
                   class="card3 position-relative rounded-4 bg-secondary p-3 px-4 mx-3"
                 >
-                  <p class="contact_heading clr-primary">
+                  <p class="contact_heading">
                     Let’s build something meaningful together.
                   </p>
+
                   <h1 class="position-absolute bottom-0 mb-3">
                     <a
                       href="contact.html"
@@ -675,14 +638,16 @@
           </div>
         </div>
 
+        <!-- Right Side Projects -->
         <div class="col-12 col-md-4">
           <div class="row g-0">
             <div class="col-12">
               <div class="card4 rounded-4 bg-primary mx-3 mx-md-0 mt-3 mt-md-0">
                 <div id="cur"></div>
+
                 <div class="proj-card px-4">
-                  <!-- 01 -->
-                  <div class="proj-row" data-index="3">
+                  <!-- Project 01 -->
+                  <div class="proj-row open">
                     <div class="proj-trigger">
                       <span class="proj-name">Nail Salon Website</span>
                       <span class="proj-arrow">
@@ -692,79 +657,44 @@
                         </svg>
                       </span>
                     </div>
+
                     <div class="proj-panel">
                       <div class="proj-panel-inner">
-                        <div class="proj-img-box" style="background: #ede8e2">
+                        <div class="proj-img-box">
                           <img
                             class="proj-img-circle"
                             src="assets/Images/Petal-Polish.png"
-                            alt="Nail Salon"
+                            alt="Nail Salon Website"
                           />
                         </div>
+
                         <div class="proj-info">
                           <div class="proj-tags">
                             <span class="proj-tag">HTML</span>
                             <span class="proj-tag">Bootstrap</span>
                             <span class="proj-tag">JS</span>
                           </div>
+
                           <a
                             href="https://soniyadav29.github.io/Petal-Polish/"
                             class="proj-visit"
                             target="_blank"
-                            >Visit
+                          >
+                            Visit
                             <svg viewBox="0 0 24 24">
                               <line x1="7" y1="17" x2="17" y2="7" />
-                              <polyline points="7 7 17 7 17 17" /></svg
-                          ></a>
+                              <polyline points="7 7 17 7 17 17" />
+                            </svg>
+                          </a>
                         </div>
-                        <div style="height: 1.4rem"></div>
-                      </div>
-                    </div>
-                  </div>
-                  <!-- 02 -->
-                  <div class="proj-row open" data-index="1">
-                    <div class="proj-trigger">
-                      <span class="proj-name">Nail Salon Website</span>
-                      <span class="proj-arrow">
-                        <svg viewBox="0 0 24 24">
-                          <line x1="7" y1="17" x2="17" y2="7" />
-                          <polyline points="7 7 17 7 17 17" />
-                        </svg>
-                      </span>
-                    </div>
-                    <div class="proj-panel">
-                      <div class="proj-panel-inner">
-                        <div class="proj-img-box" style="background: #eae7e1">
-                          <img
-                            class="proj-img-circle"
-                            src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=600&q=80"
-                            alt="Veri5 Login"
-                          />
-                        </div>
-                        <div class="proj-info">
-                          <div class="proj-tags">
-                            <span class="proj-tag">HTML</span>
-                            <span class="proj-tag">CSS</span>
-                            <span class="proj-tag">JS</span>
-                            <span class="proj-tag">Bootstrap</span>
-                          </div>
-                          <a
-                            href="https://soniyadav29.github.io/Portfolio/"
-                            class="proj-visit"
-                            target="_blank"
-                            >Visit
-                            <svg viewBox="0 0 24 24">
-                              <line x1="7" y1="17" x2="17" y2="7" />
-                              <polyline points="7 7 17 7 17 17" /></svg
-                          ></a>
-                        </div>
+
                         <div style="height: 1.4rem"></div>
                       </div>
                     </div>
                   </div>
 
-                  <!-- 03 -->
-                  <div class="proj-row" data-index="2">
+                  <!-- Project 02 -->
+                  <div class="proj-row">
                     <div class="proj-trigger">
                       <span class="proj-name">Animated Portfolio</span>
                       <span class="proj-arrow">
@@ -774,79 +704,44 @@
                         </svg>
                       </span>
                     </div>
+
                     <div class="proj-panel">
                       <div class="proj-panel-inner">
-                        <div class="proj-img-box" style="background: #e5e0d8">
+                        <div class="proj-img-box">
                           <img
                             class="proj-img-circle"
                             src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=600&q=80"
-                            alt="Portfolio"
+                            alt="Portfolio Website"
                           />
                         </div>
+
                         <div class="proj-info">
                           <div class="proj-tags">
                             <span class="proj-tag">GSAP</span>
                             <span class="proj-tag">JS</span>
                             <span class="proj-tag">CSS</span>
                           </div>
+
                           <a
                             href="https://soniyadav29.github.io/Portfolio/"
                             class="proj-visit"
                             target="_blank"
-                            >Visit
+                          >
+                            Visit
                             <svg viewBox="0 0 24 24">
                               <line x1="7" y1="17" x2="17" y2="7" />
-                              <polyline points="7 7 17 7 17 17" /></svg
-                          ></a>
+                              <polyline points="7 7 17 7 17 17" />
+                            </svg>
+                          </a>
                         </div>
+
                         <div style="height: 1.4rem"></div>
                       </div>
                     </div>
                   </div>
 
-                  <!-- 04 -->
-                  <div class="proj-row" data-index="3">
-                    <div class="proj-trigger">
-                      <span class="proj-name">Nail Salon Website</span>
-                      <span class="proj-arrow">
-                        <svg viewBox="0 0 24 24">
-                          <line x1="7" y1="17" x2="17" y2="7" />
-                          <polyline points="7 7 17 7 17 17" />
-                        </svg>
-                      </span>
-                    </div>
-                    <div class="proj-panel">
-                      <div class="proj-panel-inner">
-                        <div class="proj-img-box" style="background: #ede8e2">
-                          <img
-                            class="proj-img-circle"
-                            src="assets/Images/Petal-Polish.png"
-                            alt="Nail Salon"
-                          />
-                        </div>
-                        <div class="proj-info">
-                          <div class="proj-tags">
-                            <span class="proj-tag">HTML</span>
-                            <span class="proj-tag">Bootstrap</span>
-                            <span class="proj-tag">JS</span>
-                          </div>
-                          <a
-                            href="https://soniyadav29.github.io/Petal-Polish/"
-                            class="proj-visit"
-                            target="_blank"
-                            >Visit
-                            <svg viewBox="0 0 24 24">
-                              <line x1="7" y1="17" x2="17" y2="7" />
-                              <polyline points="7 7 17 7 17 17" /></svg
-                          ></a>
-                        </div>
-                        <div style="height: 1.4rem"></div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- 05 -->
-                  <div class="proj-row" data-index="4">
+                  <!-- Project 03 -->
+                  <div class="proj-row">
                     <div class="proj-trigger">
                       <span class="proj-name">Music Player Web App</span>
                       <span class="proj-arrow">
@@ -856,38 +751,44 @@
                         </svg>
                       </span>
                     </div>
+
                     <div class="proj-panel">
                       <div class="proj-panel-inner">
-                        <div class="proj-img-box" style="background: #e2ddd6">
+                        <div class="proj-img-box">
                           <img
                             class="proj-img-circle"
                             src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600&q=80"
-                            alt="Music Player"
+                            alt="Music Player Web App"
                           />
                         </div>
+
                         <div class="proj-info">
                           <div class="proj-tags">
                             <span class="proj-tag">HTML</span>
                             <span class="proj-tag">CSS</span>
                             <span class="proj-tag">JS</span>
                           </div>
+
                           <a
                             href="https://soniyadav29.github.io/Portfolio/"
                             class="proj-visit"
                             target="_blank"
-                            >Visit
+                          >
+                            Visit
                             <svg viewBox="0 0 24 24">
                               <line x1="7" y1="17" x2="17" y2="7" />
-                              <polyline points="7 7 17 7 17 17" /></svg
-                          ></a>
+                              <polyline points="7 7 17 7 17 17" />
+                            </svg>
+                          </a>
                         </div>
+
                         <div style="height: 1.4rem"></div>
                       </div>
                     </div>
                   </div>
 
-                  <!-- 06 -->
-                  <div class="proj-row" data-index="5">
+                  <!-- Project 04 -->
+                  <div class="proj-row">
                     <div class="proj-trigger">
                       <span class="proj-name">Temperature Converter</span>
                       <span class="proj-arrow">
@@ -897,48 +798,54 @@
                         </svg>
                       </span>
                     </div>
+
                     <div class="proj-panel">
                       <div class="proj-panel-inner">
-                        <div class="proj-img-box" style="background: #e0dbd3">
+                        <div class="proj-img-box">
                           <img
                             class="proj-img-circle"
                             src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=600&q=80"
-                            alt="Temp Converter"
+                            alt="Temperature Converter"
                           />
                         </div>
+
                         <div class="proj-info">
                           <div class="proj-tags">
                             <span class="proj-tag">HTML</span>
                             <span class="proj-tag">CSS</span>
                             <span class="proj-tag">JS</span>
                           </div>
+
                           <a
                             href="https://soniyadav29.github.io/Portfolio/"
                             class="proj-visit"
                             target="_blank"
-                            >Visit
+                          >
+                            Visit
                             <svg viewBox="0 0 24 24">
                               <line x1="7" y1="17" x2="17" y2="7" />
-                              <polyline points="7 7 17 7 17 17" /></svg
-                          ></a>
+                              <polyline points="7 7 17 7 17 17" />
+                            </svg>
+                          </a>
                         </div>
+
                         <div style="height: 1.4rem"></div>
                       </div>
                     </div>
                   </div>
                 </div>
-                <!-- /proj-card -->
               </div>
             </div>
 
+            <!-- Social Icons -->
             <div class="col-12">
               <div
                 class="card5 align-content-center mt-3 bg-primary rounded-4 mx-3 mx-md-0"
               >
                 <div class="d-flex align-items-center justify-content-evenly">
+                  <!-- LinkedIn -->
                   <p class="py-3 text-center">
                     <a
-                      class="social-icon"
                       href="https://www.linkedin.com/in/SoniYadav29"
                       target="_blank"
                     >
@@ -949,6 +856,8 @@
                       />
                     </a>
                   </p>
+
+                  <!-- GitHub -->
                   <p class="py-3 text-center">
                     <a href="https://github.com/SoniYadav29" target="_blank">
                       <img
@@ -958,6 +867,8 @@
                       />
                     </a>
                   </p>
+
+                  <!-- Instagram -->
                   <p class="py-3 text-center">
                     <a
                       href="https://www.instagram.com/soniii_0_2"
@@ -970,26 +881,19 @@
                       />
                     </a>
                   </p>
+
+                  <!-- WhatsApp -->
                   <p class="py-3 text-center">
                     <a
-                      href="https://www.instagram.com/soniii_0_2"
+                      href="https://wa.me/918693015787?text=Hi%20Soni%2C%20I%20liked%20your%20portfolio%20and%20want%20to%20discuss%20a%20website%20project%20with%20you."
                       target="_blank"
                     >
                       <img
                         src="assets/Images/what'sapp.png"
                         alt="whatsapp"
                         class="social-icon"
-                        onclick="sendWhatsApp()"
                       />
                     </a>
-                    <script>
-                      function sendWhatsApp() {
-                        let message = "Hi, I need a website. Let’s connect.";
-                        let phone = "918693015787";
-                        let url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
-                        window.open(url, "_blank");
-                      }
-                    </script>
                   </p>
                 </div>
               </div>
@@ -997,46 +901,58 @@
           </div>
         </div>
       </div>
-    </div>
+    </main>
 
+    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- GSAP -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <!-- Lenis -->
     <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.23/dist/lenis.min.js"></script>
 
     <script>
-      /* ── CUSTOM CURSOR ── */
+      /* Main Custom Cursor */
       const cursorDot = document.getElementById("cursor");
       const cursorRing = document.getElementById("cursor-ring");
-      let mx = 0,
-        my = 0,
-        rx = 0,
-        ry = 0;
 
-      document.addEventListener("mousemove", (e) => {
+      let mx = 0;
+      let my = 0;
+      let rx = 0;
+      let ry = 0;
+
+      document.addEventListener("mousemove", function (e) {
         mx = e.clientX;
         my = e.clientY;
+
         cursorDot.style.left = mx + "px";
         cursorDot.style.top = my + "px";
       });
 
-      /* ring lags behind with lerp */
-      (function lerp() {
+      function animateCursorRing() {
         rx += (mx - rx) * 0.11;
         ry += (my - ry) * 0.11;
+
         cursorRing.style.left = rx + "px";
         cursorRing.style.top = ry + "px";
-        requestAnimationFrame(lerp);
-      })();
 
-      /* radial glow follows cursor inside each card */
+        requestAnimationFrame(animateCursorRing);
+      }
+
+      animateCursorRing();
+
+      /* Card Glow Effect */
       document
         .querySelectorAll(".card, .card2, .card3, .card4, .card5")
-        .forEach((card) => {
-          card.addEventListener("mousemove", (e) => {
-            const r = card.getBoundingClientRect();
-            const x = (((e.clientX - r.left) / r.width) * 100).toFixed(1);
-            const y = (((e.clientY - r.top) / r.height) * 100).toFixed(1);
+        .forEach(function (card) {
+          card.addEventListener("mousemove", function (e) {
+            const rect = card.getBoundingClientRect();
+
+            const x = (((e.clientX - rect.left) / rect.width) * 100).toFixed(1);
+            const y = (((e.clientY - rect.top) / rect.height) * 100).toFixed(1);
+
             card.style.setProperty("--mx", x + "%");
             card.style.setProperty("--my", y + "%");
           });
@@ -1044,25 +960,34 @@
     </script>
 
     <script>
-      /* ── GSAP ENTRANCE ANIMATION ── */
-      document.addEventListener("DOMContentLoaded", () => {
+      /* GSAP Entrance Animation */
+      document.addEventListener("DOMContentLoaded", function () {
         const profilePic = document.querySelector(".profilePic");
         const navbar = document.querySelector("nav.navbar");
+
         const cardsToShow = [
           ".card",
           ".card2",
           ".card3",
           ".card4",
           ".card5",
-        ].map((s) => document.querySelector(s));
+        ].map(function (selector) {
+          return document.querySelector(selector);
+        });
+
+        if (!profilePic) return;
 
         const finalRect = profilePic.getBoundingClientRect();
+
         const vw = window.innerWidth;
         const vh = window.innerHeight;
+
         const centerX = vw / 2;
         const centerY = vh / 2;
+
         const finalCenterX = finalRect.left + finalRect.width / 2;
         const finalCenterY = finalRect.top + finalRect.height / 2;
+
         const translateX = finalCenterX - centerX;
         const translateY = finalCenterY - centerY;
 
@@ -1080,19 +1005,22 @@
           opacity: 0,
         });
 
-        if (navbar)
+        if (navbar) {
           gsap.set(navbar, {
             autoAlpha: 0,
             scale: 0.8,
             transformOrigin: "top center",
           });
-        cardsToShow.forEach((card) => {
-          if (card)
+        }
+
+        cardsToShow.forEach(function (card) {
+          if (card) {
             gsap.set(card, {
               autoAlpha: 0,
               scale: 0.8,
               transformOrigin: "top center",
             });
+          }
         });
 
         const tl = gsap.timeline();
@@ -1103,6 +1031,7 @@
           duration: 1.5,
           ease: "power3.out",
         });
+
         tl.to(profilePic, {
           duration: 1.2,
           ease: "power3.inOut",
@@ -1110,7 +1039,11 @@
           y: translateY,
           scale: 1,
         });
-        tl.set(profilePic, { clearProps: "all" });
+
+        tl.set(profilePic, {
+          clearProps: "all",
+        });
+
         tl.to(
           [navbar, ...cardsToShow].filter(Boolean),
           {
@@ -1124,10 +1057,12 @@
           "+=0.2",
         );
 
-        /* Lenis smooth scroll */
+        /* Lenis Smooth Scroll */
         const lenis = new Lenis({
           duration: 1.2,
-          easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+          easing: function (t) {
+            return Math.min(1, 1.001 - Math.pow(2, -10 * t));
+          },
           smoothWheel: true,
           smoothTouch: false,
         });
@@ -1136,38 +1071,50 @@
           lenis.raf(time);
           requestAnimationFrame(raf);
         }
+
         requestAnimationFrame(raf);
-      });
-
-      /* ── CURSOR ── */
-      const cur = document.getElementById("cur");
-      let cx = 0,
-        cy = 0;
-      document.addEventListener("mousemove", (e) => {
-        cx = e.clientX;
-        cy = e.clientY;
-        cur.style.left = cx + "px";
-        cur.style.top = cy + "px";
-      });
-      document.querySelectorAll("a,.proj-trigger").forEach((el) => {
-        el.addEventListener("mouseenter", () => cur.classList.add("big"));
-        el.addEventListener("mouseleave", () => cur.classList.remove("big"));
-      });
-
-      /* ── ACCORDION TOGGLE ── */
-      const rows = document.querySelectorAll(".proj-row");
-
-      rows.forEach((row) => {
-        row.querySelector(".proj-trigger").addEventListener("click", () => {
-          const isOpen = row.classList.contains("open");
-          /* close all */
-          rows.forEach((r) => r.classList.remove("open"));
-          /* open clicked if it was closed */
-          if (!isOpen) row.classList.add("open");
-        });
       });
     </script>
 
-    <script src="/assets/js/animation.js"></script>
+    <script>
+      /* Project Cursor */
+      const cur = document.getElementById("cur");
+
+      if (cur) {
+        document.addEventListener("mousemove", function (e) {
+          cur.style.left = e.clientX + "px";
+          cur.style.top = e.clientY + "px";
+        });
+
+        document.querySelectorAll("a, .proj-trigger").forEach(function (el) {
+          el.addEventListener("mouseenter", function () {
+            cur.classList.add("big");
+          });
+
+          el.addEventListener("mouseleave", function () {
+            cur.classList.remove("big");
+          });
+        });
+      }
+
+      /* Project Accordion */
+      const rows = document.querySelectorAll(".proj-row");
+
+      rows.forEach(function (row) {
+        const trigger = row.querySelector(".proj-trigger");
+
+        trigger.addEventListener("click", function () {
+          const isOpen = row.classList.contains("open");
+
+          rows.forEach(function (item) {
+            item.classList.remove("open");
+          });
+
+          if (!isOpen) {
+            row.classList.add("open");
+          }
+        });
+      });
+    </script>
   </body>
 </html>
